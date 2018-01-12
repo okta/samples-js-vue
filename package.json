@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "description": "Vue Sample Applications for Okta",
   "scripts": {
-    "test": "eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/"
+    "test": "npm run --prefix okta-hosted-login/ lint && npm run --prefix custom-login/ lint"
   },
-  "author": "",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",

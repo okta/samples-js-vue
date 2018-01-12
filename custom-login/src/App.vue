@@ -1,23 +1,45 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <div class="ui inverted top fixed menu">
+      <div class="ui container">
+        <router-link to="/" class="header item">
+          <img class="ui mini image" src="./assets/logo.png">
+          &nbsp;
+          Okta-Vue Sample Project
+        </router-link>
+        <a class="item" v-if="!$auth.isAuthenticated()" v-on:click="oktaAuth.loginRedirect()">Login</a>
+        <router-link to="/messages" class="item" id="messages-button"><i aria-hidden="true" class="mail outline icon"></i>Messages</router-link>
+        <router-link to="/profile" class="item" id="profile-button" v-if="$auth.isAuthenticated()">Profile</router-link>
+        <a id="logout-button" class="item" v-if="$auth.isAuthenticated()" v-on:click="logout()">Logout</a>
+      </div>
+    </div>
+    <div class="ui text container" style="margin-top: 7em;">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data: function () {
+    return { authenticated: false }
+  },
+  created () { this.isAuthenticated() },
+  watch: {
+    // Everytime the route changes, check for auth status
+    '$route': 'isAuthenticated'
+  },
+  methods: {
+    async isAuthenticated () {
+      this.authenticated = await this.$auth.isAuthenticated()
+    },
+    async logout () {
+      await this.$auth.logout()
+      await this.isAuthenticated()
+      // Navigate back to home
+      this.$router.push({ path: '/' })
+    }
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
