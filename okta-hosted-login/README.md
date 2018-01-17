@@ -9,7 +9,7 @@ This example is built with [Vue CLI][].
 Before running this sample, you will need the following:
 
 * An Okta Developer Account, you can sign up for one at https://developer.okta.com/signup/.
-* An Okta Application, configured for Singe-Page App (SPA) mode. This is done from the Okta Developer Console and you can find instructions [here][OIDC SPA Setup Instructions].  When following the wizard, use the default properties.  They are designed to work with our sample applications.
+* An Okta Application, configured for Singe-Page App (SPA) mode.  This is done from the Okta Developer Console and you can find instructions [here][OIDC SPA Setup Instructions].  When following the wizard, use the default properties.  They are designed to work with our sample applications.
 
 
 ## Running This Example
@@ -29,7 +29,7 @@ npm install
 
 Now you need to gather the following information from the Okta Developer Console:
 
-- **Client ID** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
+- **Client ID** - The client ID of the SPA application that you created earlier.  This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
 - **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`.  For example, `https://dev-1234.oktapreview.com/oauth2/default`.
 
 Now place these values into the file `src/.samples.config.ts` that was created for you in this project:
