@@ -9,7 +9,15 @@
       <p>When you click the login button below, you will be redirected to the login page on your Okta org. After you authenticate,
         you will be returned to this application with an ID token and access token. These tokens will be stored in local storage
         and can be retrieved at a later time.</p>
-      <button id="login-button" class="ui primary button" role="button" v-if="!authenticated" v-on:click="$auth.loginRedirect">Login</button>
+      <button
+        id="login-button"
+        class="ui primary button"
+        role="button"
+        v-if="!authenticated"
+        v-on:click="$auth.loginRedirect"
+      >
+      Login
+      </button>
     </div>
 
     <div v-if="authenticated">

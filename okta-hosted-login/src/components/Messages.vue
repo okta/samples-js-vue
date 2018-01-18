@@ -45,7 +45,7 @@
           <tr
             v-for="(message, index) in messages"
             :key="index"
-            :id="'message-' + message.index"
+            :id="'message-' + index"
           >
             <td>{{message.date}}</td>
             <td>{{message.text}}</td>

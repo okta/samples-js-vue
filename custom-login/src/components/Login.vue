@@ -21,8 +21,8 @@ export default {
        * we derive it from the given issuer for convenience.
        */
       baseUrl: sampleConfig.oidc.issuer.split('/oauth2')[0],
-      clientId: sampleConfig.oidc.client_id,
-      redirectUri: sampleConfig.oidc.redirect_uri,
+      clientId: sampleConfig.oidc.clientId,
+      redirectUri: sampleConfig.oidc.redirectUri,
       logo: require('@/assets/logo.png'),
       i18n: {
         en: {
