@@ -1,8 +1,8 @@
 export default {
   oidc: {
-    client_id: '{clientId}',
+    clientId: '{clientId}',
     issuer: 'https://{yourOktaDomain}.com/oauth2/default',
-    redirect_uri: 'http://localhost:8080/implicit/callback',
+    redirectUri: 'http://localhost:8080/implicit/callback',
     scope: 'openid profile email'
   },
   resourceServer: {

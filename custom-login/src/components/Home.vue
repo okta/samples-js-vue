@@ -16,7 +16,14 @@
         Once you have logged in you will be redirected through your authorization server (the issuer defined in config) to create a session for Single-Sign-On (SSO).
         After this you will be redirected back to the application with an ID token and access token. The tokens will be stored in local storage for future use.
       </p>
-      <router-link id="login-button" class="ui primary button" role="button" to="/login">Login</router-link>
+      <router-link
+        id="login-button"
+        class="ui primary button"
+        role="button"
+        to="/login"
+      >
+      Login
+      </router-link>
     </div>
 
     <div v-if="authenticated">
@@ -35,7 +42,12 @@
         To see access token authentication in action, please download one of these resource server examples:
       </p>
       <ul>
-        <li v-for="(example, index) in resourceServerExamples" :key="index"><a :href="example.url">{{example.label}}</a></li>
+        <li
+          v-for="(example, index) in resourceServerExamples"
+          :key="index"
+        >
+          <a :href="example.url">{{example.label}}</a>
+        </li>
       </ul>
       <p>Once you have downloaded and started the example resource server, you can visit the <a href="/messages">My Messages</a> page to see the authentication process in action.</p>
     </div>

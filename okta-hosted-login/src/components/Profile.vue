@@ -1,7 +1,12 @@
 <template>
   <div class="profile">
     <h1 class="ui header">
-      <i aria-hidden="true" class="drivers license outline icon"></i> My User Profile (ID Token Claims)
+      <i
+        aria-hidden="true"
+        class="drivers license outline icon"
+      >
+      </i>
+      My User Profile (ID Token Claims)
     </h1>
     <p>
       Below is the information from your ID token which was obtained during the
@@ -19,7 +24,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(claim, index) in claims" :key="index">
+        <tr
+          v-for="(claim, index) in claims"
+          :key="index"
+        >
           <td>{{claim.claim}}</td>
           <td :id="'claim-' + claim.claim">{{claim.value}}</td>
         </tr>

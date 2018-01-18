@@ -1,9 +1,17 @@
 <template>
   <div class="messages">
     <h1 class="ui header">
-      <i aria-hidden="true" class="mail outline icon"></i> My Messages
+      <i
+        aria-hidden="true"
+        class="mail outline icon"
+      >
+      </i>
+      My Messages
     </h1>
-    <div v-if="failed" class="ui error message">
+    <div
+      v-if="failed"
+      class="ui error message"
+    >
       <div class="content">
         <div class="header">Failed to fetch messages. Please verify the following:</div>
         <ul class="list">
@@ -34,7 +42,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(message, index) in messages" :key="index" :id="'message-' + message.index">
+          <tr
+            v-for="(message, index) in messages"
+            :key="index"
+            :id="'message-' + message.index"
+          >
             <td>{{message.date}}</td>
             <td>{{message.text}}</td>
           </tr>
@@ -61,7 +73,11 @@ export default {
       const accessToken = await this.$auth.getAccessToken()
       const response = await axios.get(
         sampleConfig.resourceServer.messagesUrl,
-        { headers: { Authorization: `Bearer ${accessToken}` } }
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        }
       )
 
       const messages = response.data.messages.map((message) => {
