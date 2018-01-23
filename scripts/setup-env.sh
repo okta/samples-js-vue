@@ -11,9 +11,9 @@ sed -i -- "s/{clientId}/$CLIENT_ID/g" custom-login/src/.samples.config.js
 
 # Clone the resource-server repo and update the environment
 [ ! -d samples-nodejs-express-4/ ] && git clone https://github.com/okta/samples-nodejs-express-4.git
-cd samples-nodejs-express-4/
-npm install
 
-cd ../
+# Install Node JS sample dependencies
+npm install --prefix samples-nodejs-express-4/
+
 sed -i -- "s/{yourOktaDomain}/$OKTA_DOMAIN/g" samples-nodejs-express-4/.samples.config.json
 sed -i -- "s/{clientId}/$CLIENT_ID/g" samples-nodejs-express-4/.samples.config.json

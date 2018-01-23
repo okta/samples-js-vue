@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "npm run --prefix okta-hosted-login/ lint && npm run --prefix custom-login/ lint",
     "test": "npm run lint && npm run test:e2e",
-    "postinstall": "(cd okta-hosted-login/ && npm install) && (cd custom-login && npm install)",
+    "postinstall": "npm install --prefix okta-hosted-login && npm install --prefix custom-login",
     "okta-hosted-login-server": "npm start --prefix okta-hosted-login/",
     "test:okta-hosted-login": "protractor okta-oidc-tck/e2e-tests/okta-hosted-login/conf.js",
     "custom-login-server": "npm start --prefix custom-login/",
