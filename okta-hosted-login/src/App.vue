@@ -78,7 +78,7 @@ export default {
       await this.$auth.logout()
       await this.isAuthenticated()
       // Navigate back to home
-      this.$router.go({ path: '/' })
+      this.$router.replace({ path: '/' })
     }
   }
 }
