@@ -4,8 +4,8 @@ const fs = require('fs');
 const globby = require('globby');
 const path = require('path');
 
-const bannerSourcePath = path.join(__dirname, '..', '', 'license-banner.txt');
-const files = globby.sync(path.join(__dirname, '..', 'custom-login/src', '**/*.js'));
+const bannerSourcePath = path.join(__dirname, '..', 'tools', 'license-banner.txt');
+const files = globby.sync(path.join(__dirname, '..', '{custom-login/src,okta-hosted-login/src}', '**/*.{js,vue}'));
 const bannerSource = fs.readFileSync(bannerSourcePath).toString();
 const copyrightRegex = /(Copyright \(c\) )([0-9]+)-?([0-9]+)?/;
 const match = bannerSource.match(copyrightRegex);
