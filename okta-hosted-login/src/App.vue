@@ -40,14 +40,15 @@
         >
         Profile
         </router-link>
-        <a
+        <router-link
+          to="/"
           id="logout-button"
           class="item"
           v-if="authenticated"
-          v-on:click="logout()"
+          v-on:click.native="logout()"
         >
         Logout
-        </a>
+        </router-link>
       </div>
     </div>
     <div
@@ -77,8 +78,6 @@ export default {
     async logout () {
       await this.$auth.logout()
       await this.isAuthenticated()
-      // Navigate back to home
-      this.$router.replace({ path: '/' })
     }
   }
 }
