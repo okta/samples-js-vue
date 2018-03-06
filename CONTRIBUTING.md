@@ -53,33 +53,26 @@ In addition to running npm install in the root of the project (to install the de
 npm install
 ```
 
-Next, setup the following environment variables:
+To test both samples you will need the following configured in your developer org:
+
+* A SPA application
+* A test user account with a known username and password. Note that the USERNAME should be of the form "username@email.com"
+
+Once you have those resources setup, export their details as the following environment variables:
 
 ```bash
+export ISSUER=https://{yourOktaDomain}.com/oauth2/default
 export CLIENT_ID={yourAppClientId}
-export OKTA_DOMAIN={yourOktaOrgDomain}
+export USERNAME={userName}
+export PASSWORD={password}
 ```
-
-> **NOTE:** Use only the domain part of your org url while setting `OKTA_DOMAIN` environment.
-
-* E.g - If your org url is https://example.oktapreview.com, your `OKTA_DOMAIN` should be `example.oktapreview`.
-
-After setting up the environment variables, run a script to update the configuration:
+After setting up the environment variables, run this script to copy the configuration into the JSON configuration files:
 
 ```bash
 sh scripts/setup-env.sh
 ```
 
-Finally, update the following environment variables with a username & password of any user you want to use in your tests:
-
-```bash
-# The {userName} should be of the form "username@email.com"
-
-export USERNAME={userName}
-export PASSWORD={password}
-```
-
-To perform the E2E test, simply run:
+Then run the E2E tests:
 
 ```bash
 npm test
