@@ -56,14 +56,9 @@ npm install
 Next, setup the following environment variables:
 
 ```bash
+export ISSUER=https://{yourOktaDomain}.com/oauth2/default
 export CLIENT_ID={yourAppClientId}
-export OKTA_DOMAIN={yourOktaOrgDomain}
 ```
-
-> **NOTE:** Use only the domain part of your org url while setting `OKTA_DOMAIN` environment.
-
-* E.g - If your org url is https://example.oktapreview.com, your `OKTA_DOMAIN` should be `example.oktapreview`.
-
 After setting up the environment variables, run a script to update the configuration:
 
 ```bash
