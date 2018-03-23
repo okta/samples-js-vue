@@ -11,7 +11,7 @@
     "postinstall": "node post-install.js"
   },
   "dependencies": {
-    "@okta/okta-vue": "^0.1.0",
+    "@okta/okta-vue": "^1.0.0",
     "axios": "^0.17.1",
     "semantic-ui-css": "^2.2.12",
     "vue": "^2.5.2",
