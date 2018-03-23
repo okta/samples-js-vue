@@ -8,9 +8,8 @@ addons:
 
 install:
   - npm install
-  - "bash scripts/setup-env.sh"
 
-script: 
+script:
   - npm test
 
 before_install:
