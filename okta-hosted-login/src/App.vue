@@ -28,7 +28,7 @@
         <a
           class="item"
           v-if="!authenticated"
-          v-on:click="$auth.loginRedirect()"
+          v-on:click="login()"
         >
         Login
         </a>
@@ -86,6 +86,9 @@ export default {
   methods: {
     async isAuthenticated () {
       this.authenticated = await this.$auth.isAuthenticated()
+    },
+    login () {
+      this.$auth.loginRedirect('/')
     },
     async logout () {
       await this.$auth.logout()

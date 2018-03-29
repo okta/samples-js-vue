@@ -25,7 +25,7 @@
         id="login-button"
         class="ui primary button"
         role="button"
-        v-on:click="$auth.loginRedirect"
+        v-on:click="login()"
       >
       Login
       </button>
@@ -81,6 +81,9 @@ export default {
   methods: {
     async setup () {
       this.claims = await this.$auth.getUser()
+    },
+    login () {
+      this.$auth.loginRedirect('/')
     }
   }
 }
