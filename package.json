@@ -24,6 +24,7 @@
   "bugs": "https://github.com/okta/samples-js-vue/issues",
   "homepage": "https://github.com/okta/samples-js-vue",
   "devDependencies": {
+    "dotenv": "^5.0.1",
     "eslint": "^4.13.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
