@@ -8,4 +8,5 @@ samples-nodejs-express-4
 .DS_Store
 .vscode
 .samples.config.js
+resource-server/.samples.config.json
 testenv
