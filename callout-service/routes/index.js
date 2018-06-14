@@ -4,8 +4,6 @@ var router = express.Router();
 var R = require('ramda');
 
 let claims = [
-  {claimName: 'requests', claimValue: 'read'},
-  {claimName: 'schedule', claimValue: 'read'},
 ];
 
 router.get('/', function(req, res, next) {
