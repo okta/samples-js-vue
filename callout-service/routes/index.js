@@ -3,7 +3,10 @@ var express = require('express');
 var router = express.Router();
 var R = require('ramda');
 
-let claims = [];
+let claims = [
+  {claimName: 'requests', claimValue: 'read'},
+  {claimName: 'schedule', claimValue: 'read'},
+];
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -62,17 +65,41 @@ router.post('/callback', function(req, res, next) {
     })
   }
 
+  const tokenScopes = R.compose(
+    R.flatten,
+    R.map(R.prop('scp')),
+    R.values,
+  )(input.tokens);
+
+  const isRequestedClaim = (c) => {
+    return R.contains(`${c.claimName}:${c.claimValue}`, tokenScopes);
+  };
+
   const commandBase = {
     type: 'oidc:claims:patch',
     tokens,
     op: 'add',
   }
-  const commands = claims.map((c) => {
+  const commands = claims
+    .filter(isRequestedClaim)
+    .map((c) => {
     return Object.assign({}, commandBase, {
       path: c.claimName,
       value: c.claimValue,
     });
   })
+
+  if (!commands.length) {
+    res.json({
+      action: {
+        type: 'DENY',
+        log: {
+          displayMessage: 'no claims found for passed in scopes'
+        }
+      }
+    })
+  }
+
   const resp = {
     action: {
       type: 'ALLOW',
