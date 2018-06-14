@@ -139,6 +139,7 @@
 
 <script>
 import axios from 'axios'
+import qs from 'qs'
 import sampleConfig from '../.samples.config'
 
 export default {
@@ -159,13 +160,19 @@ export default {
         // This will not work until Okta's /token endpoint is CORS enabled
         await axios.post(
           sampleConfig.oidc.issuer + '/v1/token',
-          {
-            client_id: sampleConfig.oidc.client_id,
+          qs.stringify({
+            client_id: sampleConfig.oidc.clientId,
             grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
             scopes: 'schedule:read',
             audience: 'https://acmehealth.com',
             subject_token: accessToken,
             subject_token_type: 'urn:ietf:params:oauth:token-type:access_token'
+          }),
+          {
+            headers: {
+              'accept': 'application/json',
+              'content-type': 'application/x-www-form-urlencoded'
+            }
           }
         )
         .then(function (response) {
