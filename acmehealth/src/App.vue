@@ -23,7 +23,6 @@
                 id="schedule"
               >
               Requests
-              <span>2</span>
               </router-link>
             </li>
           </ul>
@@ -32,13 +31,13 @@
           <div class="UserMenu-avatar">
             <img src="../static/images/grumpycat.png">
           </div>
-          {{user}}
           <router-link
             to="/login"
             id="logout-button"
             class="UserMenu-name"
             v-on:click.native="logout()"
           >
+          {{user}}
           </router-link>
           <i
             aria-hidden="true"
@@ -84,6 +83,10 @@ export default {
     async logout () {
       await this.$auth.logout()
       await this.isAuthenticated()
+
+      // Remove tokens
+      localStorage.removeItem('requestsToken')
+      localStorage.removeItem('scheduleToken')
     }
   }
 }

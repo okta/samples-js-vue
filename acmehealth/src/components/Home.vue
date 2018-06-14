@@ -13,24 +13,61 @@
 <template>
   <div class="profile">
     <div class="page-Requests">
-      <div class="AppBody">
-		    <div class="Wrap">
-          <!-- Start Requests -->
-          <div class="AppointmentCard has-indicator">
-            <div class="AppointmentCard-time">Token Information</div>
-            <a class="AppointmentCard-menuToggle" href="#"></a>
+      <div class="AppBody home">
+		    <div class="Wrap home-body">
+          <!-- Start Primary Access Token Info -->
+          <div class="AppointmentCard home-token">
+            <div class="AppointmentCard-time">Access Token Information</div>
             <div
               class="AppointmentCard-content"
               v-for="(claim, index) in claims"
               :key="index"
             >
-              <div class="AppointmentCard-label">{{claim.claim}}</div>
+              <div class="AppointmentCard-label smallflex">{{claim.claim}}</div>
               <div class="AppointmentCard-description">
                 <strong>{{claim.value}}</strong>
               </div> 
             </div>
           </div>
-          <!-- End Requests -->
+          <!-- End Primary Access Token Info -->
+
+          <!-- Start Schedule Access Token Info -->
+          <div
+            class="AppointmentCard home-token" 
+            v-if="scheduleTokenClaims.length"
+          >
+            <div class="AppointmentCard-time">Schedule Token Information</div>
+            <div
+              class="AppointmentCard-content"
+              v-for="(claim, index) in scheduleTokenClaims"
+              :key="index"
+            >
+              <div class="AppointmentCard-label smallflex">{{claim.claim}}</div>
+              <div class="AppointmentCard-description">
+                <strong>{{claim.value}}</strong>
+              </div> 
+            </div>
+          </div>
+          <!-- End Requests Access Token Info -->
+
+          <!-- Start Requests Access Token Info -->
+          <div
+            class="AppointmentCard home-token"
+            v-if="requestsTokenClaims.length"
+          >
+            <div class="AppointmentCard-time">Requests Token Information</div>
+            <div
+              class="AppointmentCard-content"
+              v-for="(claim, index) in requestsTokenClaims"
+              :key="index"
+            >
+              <div class="AppointmentCard-label smallflex">{{claim.claim}}</div>
+              <div class="AppointmentCard-description">
+                <strong>{{claim.value}}</strong>
+              </div> 
+            </div>
+          </div>
+          <!-- End Requests Access Token Info -->
 		    </div>
       </div>
     </div>
@@ -38,19 +75,25 @@
 </template>
 
 <script>
-import { decode } from '@/util'
+import { decode, getAndReturnClaims } from '@/util'
 
 export default {
   name: 'Profile',
   data () {
     return {
-      claims: []
+      claims: [],
+      requestsTokenClaims: [],
+      scheduleTokenClaims: []
     }
   },
   async created () {
     const accessToken = await this.$auth.getAccessToken()
     const decoded = decode(accessToken)
     this.claims = await Object.entries(decoded).map(entry => ({ claim: entry[0], value: entry[1] }))
+
+    // Get Claims for all availabe tokens
+    this.requestsTokenClaims = getAndReturnClaims('requestsToken')
+    this.scheduleTokenClaims = getAndReturnClaims('scheduleToken')
   }
 }
 </script>
