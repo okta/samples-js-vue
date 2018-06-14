@@ -52,7 +52,7 @@ export default {
       const accessToken = await this.$auth.getAccessToken()
       const newTokenResponse = await callTokenEndpoint(accessToken, 'requests:read')
       const newToken = newTokenResponse.data['access_token']
-
+      console.log(newToken)
       const response = await callResourceApi(sampleConfig.resourceServer.requestsUrl, newToken)
       this.requests = response.data.requests
     }
