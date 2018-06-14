@@ -5,25 +5,17 @@
   "scripts": {
     "acmehealth-server": "npm start --prefix acmehealth/",
     "resource-server": "node resource-server/server.js",
-    "postinstall": "npm run install-acmehealth && npm run install-resource-server",
-    "install-acmehealth": "cd acmehealth && npm install",
-    "install-resource-server": "cd resource-server && npm install",
-    "start": "npm run resource-server & npm run acmehealth-server"
+    "callout-service": "npm start --prefix callout-service/",
+    "postinstall": "yarn install-acmehealth && yarn install-resource-server && yarn install-callout-service",
+    "install-acmehealth": "cd acmehealth && yarn install",
+    "install-resource-server": "cd resource-server && yarn install",
+    "install-callout-service": "cd callout-service && yarn install && yarn init-app",
+    "start": "npm run resource-server & npm run callout-service & npm run acmehealth-server"
   },
-  "devDependencies": {
-    "dotenv": "^5.0.1",
-    "eslint": "^4.13.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-vue": "^4.2.0",
-    "find-process": "^1.1.0",
-    "forever-monitor": "^1.7.1",
-    "jasmine-reporters": "^2.2.0",
-    "platform": "^1.3.5",
-    "protractor": "^5.1.0",
-    "wait-on": "^2.0.2"
-  },
+  "devDependencies": {},
   "bin": {},
-  "private": true
+  "private": true,
+  "dependencies": {
+    "npm-run-all": "^4.1.3"
+  }
 }
