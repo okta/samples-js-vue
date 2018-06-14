@@ -37,17 +37,28 @@ const callTokenEndpoint = async function (token, scope) {
 }
 
 const callResourceApi = async function (url, token) {
-  try {
-    return await axios.get(
-      url,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+  return axios.get(
+    url,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
       }
-    )
-  } catch (e) {
-    console.error(e)
+    }
+  )
+}
+
+const setStorage = function (key, value) {
+  localStorage.setItem(key, value)
+}
+
+const getAndReturnClaims = function (key) {
+  const token = localStorage.getItem(key)
+  if (token) {
+    const decoded = decode(token)
+    return Object.entries(decoded).map(entry => ({ claim: entry[0], value: entry[1] }))
+  } else {
+    return []
   }
 }
-export { decode, callTokenEndpoint, callResourceApi }
+
+export { decode, callTokenEndpoint, callResourceApi, setStorage, getAndReturnClaims }

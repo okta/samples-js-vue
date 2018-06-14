@@ -2,7 +2,7 @@
   <div class="requests">
     <div class="page-Requests">
       <div class="AppBody">
-		    <div class="Wrap">
+		    <div class="Wrap" v-if="requests.length">
           <!-- Start Requests -->
           <div
             class="AppointmentCard has-indicator"
@@ -30,19 +30,39 @@
           </div>
           <!-- End Requests -->
 		    </div>
+
+        <div class="Wrap" v-if="!requests.length">
+          <!-- Start Error Message -->
+          <div class="AppointmentCard has-indicator">
+            <div class="AppointmentCard-time">Notice</div>
+            <a class="AppointmentCard-menuToggle" href="#"></a>
+            <div class="AppointmentCard-content">
+              <div class="AppointmentCard-label">Error</div>
+              <div class="AppointmentCard-description">
+                <strong>{{error.name}}</strong>
+              </div> 
+              <div class="AppointmentCard-label">Reason</div>
+              <div class="AppointmentCard-description">
+                <p>{{error.description}}</p>
+              </div>
+            </div>
+          </div>
+          <!-- End Error Message -->
+		    </div>
       </div>
     </div>
 	</div>
 </template>
 
 <script>
-import { callTokenEndpoint, callResourceApi } from '@/util'
+import { callTokenEndpoint, callResourceApi, setStorage } from '@/util'
 import sampleConfig from '../.samples.config'
 
 export default {
   name: 'Requests',
   data () {
     return {
+      error: {},
       requests: []
     }
   },
@@ -52,8 +72,22 @@ export default {
       const accessToken = await this.$auth.getAccessToken()
       const newTokenResponse = await callTokenEndpoint(accessToken, 'requests:read')
       const newToken = newTokenResponse.data['access_token']
-      const response = await callResourceApi(sampleConfig.resourceServer.requestsUrl, newToken)
-      this.requests = response.data.requests
+
+      // Store new token into separate storage
+      setStorage('requestsToken', newToken)
+
+      try {
+        const response = await callResourceApi(sampleConfig.resourceServer.requestsUrl, newToken)
+        this.requests = response.data.requests
+      } catch (e) {
+        this.error = {
+          name: 'Resource Server API',
+          description: e.message
+        }
+        if (e.response && e.response.data) {
+          this.error.description = e.response.data
+        }
+      }
     }
   }
 }

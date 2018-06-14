@@ -1,0 +1,17 @@
+.home {
+    display:table;
+    border-spacing:20px;
+}
+
+.home-body {
+    display: table-row;
+}
+
+.home-token {
+    display: table-cell;
+    word-break: break-word;
+}
+
+.smallflex {
+    flex-basis:50px
+}
