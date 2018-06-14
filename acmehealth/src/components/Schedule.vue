@@ -138,8 +138,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-import qs from 'qs'
+import { callTokenEndpoint, callResourceApi } from '@/util'
 import sampleConfig from '../.samples.config'
 
 export default {
@@ -153,60 +152,16 @@ export default {
   methods: {
     async setup () {
       const accessToken = await this.$auth.getAccessToken()
-      await this.callApi(accessToken)
-    },
-    async callApi (accessToken) {
-      try {
-        // This will not work until Okta's /token endpoint is CORS enabled
-        await axios.post(
-          sampleConfig.oidc.issuer + '/v1/token',
-          qs.stringify({
-            client_id: sampleConfig.oidc.clientId,
-            grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
-            scopes: 'schedule:read',
-            audience: 'https://acmehealth.com',
-            subject_token: accessToken,
-            subject_token_type: 'urn:ietf:params:oauth:token-type:access_token'
-          }),
-          {
-            headers: {
-              'accept': 'application/json',
-              'content-type': 'application/x-www-form-urlencoded'
-            }
-          }
-        )
-        .then(function (response) {
-          // Parse the response for a new token
-          const newToken = response.data['access_token']
-          this.getSchedule(newToken)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-      } catch (e) {
-        console.error(e)
-      }
-    },
-    async getSchedule (token) {
-      try {
-        const response = await axios.get(
-          sampleConfig.resourceServer.scheduleUrl,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          }
-        )
-        this.schedule = response.data.schedule.map(item => {
-          return {
-            time: item.time.split('-')[1],
-            name: item.name,
-            description: item.description
-          }
-        })
-      } catch (e) {
-        console.error(e)
-      }
+      const newTokenResponse = await callTokenEndpoint(accessToken, 'schedule:read')
+      const newToken = newTokenResponse.data['access_token']
+      const response = await callResourceApi(sampleConfig.resourceServer.scheduleUrl, newToken)
+      this.schedule = response.data.schedule.map(item => {
+        return {
+          time: item.time.split('-')[1],
+          name: item.name,
+          description: item.description
+        }
+      })
     }
   }
 }

@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import util from '@/util'
+import { decode } from '@/util'
 
 export default {
   name: 'Profile',
@@ -49,7 +49,7 @@ export default {
   },
   async created () {
     const accessToken = await this.$auth.getAccessToken()
-    const decoded = util.decode(accessToken)
+    const decoded = decode(accessToken)
     this.claims = await Object.entries(decoded).map(entry => ({ claim: entry[0], value: entry[1] }))
   }
 }

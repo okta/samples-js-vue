@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import util from './util'
+import { decode } from './util'
 
 export default {
   name: 'app',
@@ -77,7 +77,7 @@ export default {
       this.authenticated = await this.$auth.isAuthenticated()
       if (this.authenticated) {
         const accessToken = await this.$auth.getAccessToken()
-        const decoded = util.decode(accessToken)
+        const decoded = decode(accessToken)
         this.user = decoded.sub
       }
     },

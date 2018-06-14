@@ -36,9 +36,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-import qs from 'qs'
-
+import { callTokenEndpoint, callResourceApi } from '@/util'
 import sampleConfig from '../.samples.config'
 
 export default {
@@ -52,54 +50,11 @@ export default {
   methods: {
     async setup () {
       const accessToken = await this.$auth.getAccessToken()
-      await this.callApi(accessToken)
-    },
-    async callApi (accessToken) {
-      try {
-        // This will not work until Okta's /token endpoint is CORS enabled
-        await axios.post(
-          sampleConfig.oidc.issuer + '/v1/token',
-          qs.stringify({
-            client_id: sampleConfig.oidc.clientId,
-            grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
-            scopes: 'requests:read',
-            audience: 'https://acmehealth.com',
-            subject_token: accessToken,
-            subject_token_type: 'urn:ietf:params:oauth:token-type:access_token'
-          }),
-          {
-            headers: {
-              'accept': 'application/json',
-              'content-type': 'application/x-www-form-urlencoded'
-            }
-          }
-        )
-        .then(function (response) {
-          // Parse the response for a new token
-          const newToken = response.data['access_token']
-          this.getRequests(newToken)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-      } catch (e) {
-        console.error(e)
-      }
-    },
-    async getRequests (token) {
-      try {
-        const response = await axios.get(
-          sampleConfig.resourceServer.requestsUrl,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          }
-        )
-        this.requests = response.data.requests
-      } catch (e) {
-        console.error(e)
-      }
+      const newTokenResponse = await callTokenEndpoint(accessToken, 'requests:read')
+      const newToken = newTokenResponse.data['access_token']
+
+      const response = await callResourceApi(sampleConfig.resourceServer.requestsUrl, newToken)
+      this.requests = response.data.requests
     }
   }
 }
