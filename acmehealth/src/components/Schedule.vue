@@ -175,13 +175,13 @@ export default {
   methods: {
     async setup () {
       const accessToken = await this.$auth.getAccessToken()
-      const newTokenResponse = await callTokenEndpoint(accessToken, 'schedule:read')
-      const newToken = newTokenResponse.data['access_token']
-
-      // Store new token into separate storage
-      setStorage('scheduleToken', newToken)
-
       try {
+        const newTokenResponse = await callTokenEndpoint(accessToken, 'schedule:read')
+        const newToken = newTokenResponse.data['access_token']
+
+        // Store new token into separate storage
+        setStorage('scheduleToken', newToken)
+
         const response = await callResourceApi(sampleConfig.resourceServer.scheduleUrl, newToken)
         this.schedule = response.data.schedule.map(item => {
           return {
@@ -192,7 +192,7 @@ export default {
         })
       } catch (e) {
         this.error = {
-          name: 'Resource Server API',
+          name: e.name,
           description: e.message
         }
         if (e.response && e.response.data) {
