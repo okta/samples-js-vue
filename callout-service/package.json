@@ -1,0 +1,20 @@
+{
+  "name": "callout-service",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "init-app": "pushd ${PWD} && yarn install && cd public/ui-app && yarn install && yarn build && popd",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "ramda": "^0.25.0",
+    "uniqid": "^5.0.3"
+  }
+}
