@@ -6,6 +6,7 @@ export default {
     scope: 'openid profile email'
   },
   resourceServer: {
-    messagesUrl: 'http://localhost:8000/api/messages'
+    requestsUrl: 'http://localhost:8000/api/requests',
+    scheduleUrl: 'http://localhost:8000/api/schedule'
   }
 }
