@@ -72,7 +72,7 @@ class ClaimApp extends Component {
             <Form onSubmit={this.addClaim}>
               <Form.Input label="Claim Name" type="text" name="claimName" value={claimName} onChange={this.handleChange} inline required />
               <Form.Input label="Claim Value" type="text" name="claimValue" value={claimValue} onChange={this.handleChange} inline required />
-              <Button type='submit' size="large" primary>Add</Button>
+              <Button type='submit' size="large" primary>Add Claim</Button>
             </Form>
           </Grid.Column>
 

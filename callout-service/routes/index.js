@@ -49,7 +49,8 @@ router.post('/callback', function(req, res, next) {
           displayMessage: 'no token found in the input'
         }
       }
-    })
+    });
+    return;
   }
 
   if (!claims.length) {
@@ -60,7 +61,8 @@ router.post('/callback', function(req, res, next) {
           displayMessage: 'no claims have been created'
         }
       }
-    })
+    });
+    return;
   }
 
   const tokenScopes = R.compose(
@@ -95,7 +97,8 @@ router.post('/callback', function(req, res, next) {
           displayMessage: 'no claims found for passed in scopes'
         }
       }
-    })
+    });
+    return;
   }
 
   const resp = {
