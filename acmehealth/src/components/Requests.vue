@@ -70,18 +70,18 @@ export default {
   methods: {
     async setup () {
       const accessToken = await this.$auth.getAccessToken()
-      const newTokenResponse = await callTokenEndpoint(accessToken, 'requests:read')
-      const newToken = newTokenResponse.data['access_token']
-
-      // Store new token into separate storage
-      setStorage('requestsToken', newToken)
-
       try {
+        const newTokenResponse = await callTokenEndpoint(accessToken, 'requests:read')
+        const newToken = newTokenResponse.data['access_token']
+
+        // Store new token into separate storage
+        setStorage('requestsToken', newToken)
+
         const response = await callResourceApi(sampleConfig.resourceServer.requestsUrl, newToken)
         this.requests = response.data.requests
       } catch (e) {
         this.error = {
-          name: 'Resource Server API',
+          name: e.name,
           description: e.message
         }
         if (e.response && e.response.data) {
