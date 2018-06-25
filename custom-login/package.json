@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "test": "echo 'Tests not yet implemented' && exit 1",
+    "test": "npm run lint && npm run test:custom-login --prefix ../",
     "lint": "eslint --ext .js,.vue src test/e2e/specs",
     "build": "node build/build.js",
-    "postinstall": "node post-install.js"
+    "postinstall": "node post-install.js",
+    "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
     "@okta/okta-signin-widget": "^2.5.0",
