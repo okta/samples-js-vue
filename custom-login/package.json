@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@okta/okta-signin-widget": "^2.5.0",
-    "@okta/okta-vue": "^1.0.0",
+    "@okta/okta-vue": "^1.0.2",
     "axios": "^0.17.1",
     "semantic-ui-css": "^2.2.12",
     "vue": "^2.5.2",
