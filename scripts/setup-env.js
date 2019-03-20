@@ -30,6 +30,12 @@ function updateConfig(file) {
   const data = fs.readFileSync(file, 'utf8');
   let result = data.replace(/{clientId}/g, process.env.CLIENT_ID);
   result = result.replace(/https:\/\/{yourOktaDomain}.com\/oauth2\/default/g, process.env.ISSUER);
+
+  // Only used for testing to support non-https orgs
+  if (process.env.OKTA_TESTING_DISABLEHTTPSCHECK) {
+    result = result.replace(/disableHttpsCheck: false/g, 'disableHttpsCheck: true');
+  }
+
   fs.writeFileSync(file, result, 'utf8');
 }
 
@@ -49,6 +55,6 @@ function cloneRepository(repository, directory) {
 updateConfig(path.join(__dirname, '..', 'okta-hosted-login', '/src/.samples.config.js'));
 updateConfig(path.join(__dirname, '..', 'custom-login', '/src/.samples.config.js'));
 cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples-nodejs-express-4');
-execSync(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install`);
+execSync(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install --unsafe-perm`);
 updateConfig(path.join(__dirname, '..', 'samples-nodejs-express-4', '.samples.config.json'));
 cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck');
