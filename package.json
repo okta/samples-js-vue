@@ -11,7 +11,7 @@
     "test:custom-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/custom-login/conf.js",
     "resource-server": "node samples-nodejs-express-4/resource-server/server.js",
     "test:e2e": "npm run test:okta-hosted-login && npm run test:custom-login",
-    "pretest": "webdriver-manager update --versions.standalone=3.141.59 --gecko false && node scripts/setup-env.js",
+    "pretest": "./scripts/updateSeDrivers.sh && node scripts/setup-env.js",
     "pretest-legacy": "npm run webdriver-update-legacy && node scripts/setup-env.js",
     "postinstall": "npm run install-custom-login && npm run install-okta-hosted-login",
     "install-custom-login": "cd custom-login && npm install --allow-root",
@@ -36,7 +36,7 @@
     "forever-monitor": "^1.7.1",
     "jasmine-reporters": "^2.2.0",
     "platform": "^1.3.5",
-    "protractor": "^5.1.0",
+    "protractor": "^5.4",
     "wait-on": "^2.0.2"
   },
   "bin": {},
