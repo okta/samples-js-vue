@@ -21,15 +21,10 @@ import LoginComponent from '@/components/Login'
 import ProfileComponent from '@/components/Profile'
 import MessagesComponent from '@/components/Messages'
 
-import sampleConfig from '@/.samples.config'
+import sampleConfig from '@/config'
 
 Vue.use(Router)
-Vue.use(Auth, {
-  issuer: sampleConfig.oidc.issuer,
-  client_id: sampleConfig.oidc.clientId,
-  redirect_uri: sampleConfig.oidc.redirectUri,
-  scope: sampleConfig.oidc.scope
-})
+Vue.use(Auth, sampleConfig.oidc)
 
 const router = new Router({
   mode: 'history',

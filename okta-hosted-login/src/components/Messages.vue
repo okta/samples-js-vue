@@ -70,7 +70,7 @@
 
 <script>
 import axios from 'axios'
-import sampleConfig from '../.samples.config'
+import sampleConfig from '../config'
 
 export default {
   name: 'Messages',

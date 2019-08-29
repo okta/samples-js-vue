@@ -19,9 +19,8 @@
 <script>
 import OktaSignIn from '@okta/okta-signin-widget'
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css'
-import '@okta/okta-signin-widget/dist/css/okta-theme.css'
 
-import sampleConfig from '../.samples.config'
+import sampleConfig from '../config'
 
 export default {
   name: 'Login',
@@ -43,10 +42,10 @@ export default {
           }
         },
         authParams: {
-          responseType: ['id_token', 'token'],
+          pkce: true,
           issuer: sampleConfig.oidc.issuer,
           display: 'page',
-          scopes: sampleConfig.oidc.scope.split(' ')
+          scopes: sampleConfig.oidc.scopes
         }
       })
 
