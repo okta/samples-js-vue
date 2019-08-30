@@ -8,11 +8,10 @@
     "test": "npm run lint && npm run test:okta-hosted-login --prefix ../",
     "lint": "eslint --ext .js,.vue src test/e2e/specs",
     "build": "node build/build.js",
-    "postinstall": "node post-install.js",
     "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-vue": "^1.0.2",
+    "@okta/okta-vue": "^1.1.1",
     "axios": "^0.17.1",
     "semantic-ui-css": "^2.2.12",
     "vue": "^2.5.2",
@@ -34,6 +33,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
+    "dotenv": "^8.1.0",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
@@ -60,6 +60,7 @@
     "selenium-server": "^3.0.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
+    "source-map-loader": "^0.2.4",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",

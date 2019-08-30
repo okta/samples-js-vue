@@ -27,26 +27,16 @@ Then install dependencies:
 npm install
 ```
 
-Now you need to gather the following information from the Okta Developer Console:
+Gather the following information from the Okta Developer Console:
 
-- **Client ID** - The client ID of the SPA application that you created earlier.  This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
-- **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`.  For example, `https://dev-1234.oktapreview.com/oauth2/default`.
+- **Client Id** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
+- **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`. For example, `https://dev-1234.oktapreview.com/oauth2/default`.
 
-Now place these values into the file `src/.samples.config.js` that was created for you in this project:
+These values must exist as environment variables. They can be exported in the shell, or saved in a file named `testenv`, located in the parent directory (samples-js-vue). See [dotenv](https://www.npmjs.com/package/dotenv) for more details on this file format.
 
-```javascript
-export default {
-  oidc: {
-    clientId: '{clientId}',
-    issuer: 'https://{yourOktaDomain}.com/oauth2/default',
-    redirectUri: 'http://localhost:8080/implicit/callback',
-    scope: 'openid profile email',
-  },
-  resourceServer: {
-    messagesUrl: 'http://localhost:8000/api/messages',
-  },
-};
-
+```ini
+ISSUER=https://yourOktaDomain.com/oauth2/default
+CLIENT_ID=123xxxxx123
 ```
 
 Now start the app server:
@@ -72,6 +62,7 @@ You can login with the same account that you created when signing up for your De
 This sample contains the same "Messages" page that is included in the [Okta Hosted Login](/okta-hosted-login) sample, please refer to that sample for instructions on setting up the resource server.
 
 [Vue CLI]: https://github.com/vuejs/vue-cli
+[PKCE Flow]: https://developer.okta.com/docs/guides/implement-auth-code-pkce
 [Okta Vue Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-vue
-[OIDC SPA Setup Instructions]: https://developer.okta.com/authentication-guide/implementing-authentication/implicit#1-setting-up-your-application
+[OIDC SPA Setup Instructions]: https://developer.okta.com/docs/guides/sign-into-spa/vue/before-you-begin
 [Okta Sign In Widget]: https://github.com/okta/okta-signin-widget
