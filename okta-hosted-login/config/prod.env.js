@@ -17,7 +17,8 @@ process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
 // List of environment variables made available to the app
 [
   'ISSUER',
-  'CLIENT_ID'
+  'CLIENT_ID',
+  'OKTA_TESTING_DISABLEHTTPSCHECK'
 ].forEach((key) => {
   if (!process.env[key]) {
     throw new Error(`Environment variable ${key} must be set. See README.md`)
@@ -25,10 +26,11 @@ process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
   process.env[key] = JSON.stringify(process.env[key]) // ensure variable is a string
 })
 
-const { CLIENT_ID, ISSUER } = process.env
+const { CLIENT_ID, ISSUER, OKTA_TESTING_DISABLEHTTPSCHECK } = process.env
 
 module.exports = {
   NODE_ENV: '"production"',
   CLIENT_ID,
-  ISSUER
+  ISSUER,
+  OKTA_TESTING_DISABLEHTTPSCHECK
 }
