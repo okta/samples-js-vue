@@ -1,10 +1,10 @@
-const { CLIENT_ID, ISSUER } = process.env
+const { CLIENT_ID, ISSUER, PORT } = process.env
 
 export default {
   oidc: {
     clientId: CLIENT_ID,
     issuer: ISSUER,
-    redirectUri: 'http://localhost:8080/implicit/callback',
+    redirectUri: 'http://localhost:' + PORT + '/implicit/callback',
     scopes: ['openid', 'profile', 'email'],
     pkce: true,
     testing: {
