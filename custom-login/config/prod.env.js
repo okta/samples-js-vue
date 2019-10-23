@@ -14,6 +14,7 @@ if (fs.existsSync(TESTENV)) {
   })
 }
 process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
+process.env.OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHECK || false;
 
 // List of environment variables made available to the app
 [
@@ -26,10 +27,11 @@ process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
   process.env[key] = JSON.stringify(process.env[key]) // ensure variable is a string
 })
 
-const { CLIENT_ID, ISSUER } = process.env
+const { CLIENT_ID, ISSUER, OKTA_TESTING_DISABLEHTTPSCHECK } = process.env
 
 module.exports = {
   NODE_ENV: '"production"',
   CLIENT_ID,
-  ISSUER
+  ISSUER,
+  OKTA_TESTING_DISABLEHTTPSCHECK
 }
