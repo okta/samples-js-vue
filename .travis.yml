@@ -1,16 +1,15 @@
 language: node_js
-
 node_js:
-- '8.4.0'
-
+- 8.4.0
 addons:
   chrome: stable
-
 install:
-  - npm install
-
+- npm install
 script:
-  - npm test
-
+- npm test
 before_install:
-  - "npm install -g npm@5.6.0"
+- npm install -g npm@5.6.0
+notifications:
+  slack:
+    if: type = cron
+    secure: gjfU4BbAxmbs3xyEABdIOui6CJ6iATiTaAZ0VQ6vDw+nM1wzdMwFp/dYU8nQZYKPfCB+w4iiTR3ZC1d8RaUy/Q7PqBh6jz55QvVR1/XSlwtM3Z4bZ40ome1sGeS2H/SevRpCTHiskBFFSyXKUtc5lVCnAOjueR1fapmeSzSTzZ+sHplERN+u1EQFZjCXlL6l9Y2QHbucd+ytvt8H4lrR5QABGUbSL/FPmuDH14b4QJ9zh5qcD5aRXY83bXkUDwPzj2Ssa/gZ5tY5TGRHnDBvky8rNRhGBzNogOyBV5afHdoH0v6cXFbseQEhNcEkMAdYbnEjr1NP6459fy5Pv0p7NBdAynVc7lSeeFvzYm4cijS51I116b5Ps1ABPmB965oGwpmVEIOhOMg0wGT78WzPLe03gikpPTG3/frwi29hoPTkVuPJDEUM3AORhxbh2uI0cQKxt0OMDnUrsE26bKFuGkyU5zUFi1HAN8Pmrrf6x+FCdHuDw0/nJJ75RyIbNRh3tdvSbXRYzsjqrqFGn3jyNa5gZAK29jz5p1H12uO9rjGJDC+ZNYKUr9Dw4PwjScds+oWVeQY6JlB+ygmNJ+8DtwNO8ixxvdOnnHiwqxB2+5MtF2rGt+sGg1FJlfTVecKYysYe61nreeXscGsA2Hhre+jHQztDyZ4Ceb07594qaA0=
