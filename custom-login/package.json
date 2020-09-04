@@ -11,8 +11,8 @@
     "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-signin-widget": "^3.2.0",
-    "@okta/okta-vue": "^1.1.1",
+    "@okta/okta-signin-widget": "^4.4.2",
+    "@okta/okta-vue": "^2.1.1",
     "axios": "^0.17.1",
     "semantic-ui-css": "^2.2.12",
     "text-encoding": "^0.7.0",
