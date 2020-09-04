@@ -32,7 +32,7 @@
     </div>
 
     <div v-if="this.$parent.authenticated">
-      <p>Welcome back, {{claims.name}}!</p>
+      <p>Welcome back, {{claims && claims.name}}!</p>
       <p>
         You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID token and access token in local storage.
         Visit the <a href="/profile">My Profile</a> page to take a look inside the ID token.
