@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@okta/okta-vue": "^2.1.1",
-    "axios": "^0.20.1",
+    "axios": "^0.20.0",
     "semantic-ui-css": "^2.2.12",
     "text-encoding": "^0.7.0",
     "vue": "^2.5.2",

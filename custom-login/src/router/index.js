@@ -38,7 +38,7 @@ const router = new Router({
       component: LoginComponent
     },
     {
-      path: '/implicit/callback',
+      path: '/login/callback',
       component: Auth.handleCallback()
     },
     {
