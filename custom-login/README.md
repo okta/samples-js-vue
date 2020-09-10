@@ -4,6 +4,11 @@ This example shows you how to use the [Okta Vue Library][] to log in a user to a
 
 This example is built with the [Vue CLI][].
 
+Dependencies
+
+* @okta/okta-vue@^2.1.1
+* @okta/okta-signin-widget@^4.4.2
+
 ## Prerequisites
 
 Before running this sample, you will need the following:
