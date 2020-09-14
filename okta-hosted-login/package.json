@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "@okta/okta-vue": "^2.1.1",
-    "axios": "^0.17.1",
+    "axios": "^0.20.0",
     "semantic-ui-css": "^2.2.12",
     "text-encoding": "^0.7.0",
-    "vue": "^2.5.2",
+    "vue": "^2.6.12",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -66,7 +66,7 @@
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.5.2",
+    "vue-template-compiler": "^2.6.12",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
