@@ -6,15 +6,19 @@
     "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "npm run lint && npm run test:custom-login --prefix ../",
+    "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-signin-widget": "^4.4.2",
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-router": "^3.0.1",
+    "@okta/okta-signin-widget": "^4.4.3",
     "@okta/okta-vue": "^2.1.1",
+    "axios": "^0.20.0",
     "semantic-ui-css": "^2.4.1",
-    "text-encoding": "^0.7.0",
-    "vue": "^2.6.12",
-    "vue-router": "^3.0.1"
+    "text-encoding": "^0.7.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -23,7 +27,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "dotenv": "^8.1.0"
   },
   "engines": {
     "node": ">= 6.0.0",
@@ -32,7 +37,7 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "browser": true
     },
     "extends": [
       "plugin:vue/essential",
