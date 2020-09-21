@@ -13,7 +13,7 @@ Dependencies
 Before running this sample, you will need the following:
 
 * An Okta Developer Account, you can sign up for one at https://developer.okta.com/signup/.
-* An Okta Application, configured for Singe-Page App (SPA) mode.  This is done from the Okta Developer Console and you can find instructions [here][OIDC SPA Setup Instructions].  When following the wizard, use the default properties.  They are designed to work with our sample applications.
+* An Okta Application, configured for Singe-Page App (SPA) mode. This is done from the Okta Developer Console and you can find instructions [here][OIDC SPA Setup Instructions].  When following the wizard, use the default properties.  They are designed to work with our sample applications.
 
 
 ## Running This Example
@@ -66,7 +66,8 @@ You can login with the same account that you created when signing up for your De
 If you were able to successfully login in the previous section you can continue with the resource server example.  Please download and run one of these sample applications in another terminal:
 
 * [Node/Express Resource Server Example](https://github.com/okta/samples-nodejs-express-4/tree/master/resource-server)
-* [Java/Spring MVC Resource Server Example](https://github.com/okta/samples-java-spring-mvc/tree/master/resource-server)
+* [Java/Spring MVC Resource Server Example](https://github.com/okta/samples-java-spring/tree/master/resource-server)
+* [ASP.NET](https://github.com/okta/samples-aspnet/tree/master/resource-server) and [ASP.NET Core](https://github.com/okta/samples-aspnetcore/tree/master/samples-aspnetcore-3x/resource-server) Resource Server Examples
 
 Once you have the resource server running (it will run on port 8000) you can visit the `/messages` page within the Vue application to see the authentication flow.  The Vue application will use its stored access token to authenticate itself with the resource server, you will see this as the `Authorization: Bearer <access_token>` header on the request if you inspect the network traffic in the browser.
 

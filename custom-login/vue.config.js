@@ -13,7 +13,6 @@ if (fs.existsSync(TESTENV)) {
 }
 process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
 
-const webpack = require('webpack');
 const env = {};
 
 // List of environment variables made available to the app

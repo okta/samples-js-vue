@@ -13,7 +13,6 @@ if (fs.existsSync(TESTENV)) {
 }
 process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
 
-const webpack = require('webpack');
 const env = {};
 
 // List of environment variables made available to the app
@@ -28,11 +27,17 @@ const env = {};
 });
 
 module.exports = {
-  configureWebpack: {
-    plugins: [
-      new webpack.DefinePlugin({
-        'process.env': env
+  chainWebpack: config => {
+    config
+      .plugin('define')
+      .tap(args => {
+        const base = args[0]['process.env'];
+        args[0]['process.env'] = {
+          ...base,
+          ...env,
+        };
+        return args;
       })
-    ]
-  }
+  },
+  runtimeCompiler: true
 }
