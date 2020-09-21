@@ -39,5 +39,6 @@ module.exports = {
         };
         return args;
       })
-  }
+  },
+  runtimeCompiler: true
 }
