@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 const { CLIENT_ID, ISSUER, OKTA_TESTING_DISABLEHTTPSCHECK } = process.env
 
 export default {
