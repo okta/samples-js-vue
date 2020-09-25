@@ -7,14 +7,14 @@ This example is built with the [Vue CLI][].
 Dependencies
 
 * @okta/okta-vue@^2.1.1
-* @okta/okta-signin-widget@^4.4.2
+* @okta/okta-signin-widget@^4.4.3
 
 ## Prerequisites
 
 Before running this sample, you will need the following:
 
 * An Okta Developer Account, you can sign up for one at https://developer.okta.com/signup/.
-* An Okta Application, configured for Singe-Page App (SPA) mode.  This is done from the Okta Developer Console and you can find instructions [here][OIDC SPA Setup Instructions].  When following the wizard, use the default properties.  They are designed to work with our sample applications.
+* An Okta Application, configured for Singe-Page App (SPA) mode. This is done from the Okta Developer Console and you can find instructions [here][OIDC SPA Setup Instructions].  When following the wizard, use the default properties.  They are designed to work with our sample applications.
 
 
 ## Running This Example

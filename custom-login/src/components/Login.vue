@@ -35,6 +35,7 @@ export default {
         baseUrl: sampleConfig.oidc.issuer.split('/oauth2')[0],
         clientId: sampleConfig.oidc.clientId,
         redirectUri: sampleConfig.oidc.redirectUri,
+        // eslint-disable-next-line no-undef
         logo: require('@/assets/logo.png'),
         i18n: {
           en: {
