@@ -10,6 +10,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 import Vue from 'vue'
+import { Security } from '@okta/okta-vue'
 import './polyfills'
 import App from './App'
 import router from './router'
@@ -19,6 +20,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  template: '<App/>',
-  components: { App }
+  template: '<Security><App/></Security>',
+  components: { Security, App }
 })

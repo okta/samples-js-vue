@@ -27,7 +27,7 @@
         </router-link>
         <a
           class="item"
-          v-if="!authenticated"
+          v-if="!authState.isAuthenticated"
           v-on:click="login()"
         >
         Login
@@ -36,7 +36,7 @@
           to="/messages"
           class="item"
           id="messages-button"
-          v-if="authenticated"
+          v-if="authState.isAuthenticated"
         >
           <i
             aria-hidden="true"
@@ -48,19 +48,18 @@
           to="/profile"
           class="item"
           id="profile-button"
-          v-if="authenticated"
+          v-if="authState.isAuthenticated"
         >
         Profile
         </router-link>
-        <router-link
-          to="/"
+        <a
           id="logout-button"
           class="item"
-          v-if="authenticated"
-          v-on:click.native="logout()"
+          v-if="authState.isAuthenticated"
+          v-on:click="logout()"
         >
         Logout
-        </router-link>
+        </a>
       </div>
     </div>
     <div
@@ -75,24 +74,13 @@
 <script>
 export default {
   name: 'app',
-  data: function () {
-    return { authenticated: false }
-  },
-  created () { this.isAuthenticated() },
-  watch: {
-    // Everytime the route changes, check for auth status
-    '$route': 'isAuthenticated'
-  },
+  inject: ['authState'],
   methods: {
-    async isAuthenticated () {
-      this.authenticated = await this.$auth.isAuthenticated()
-    },
     login () {
-      this.$auth.loginRedirect('/')
+      this.$auth.signInWithRedirect('/')
     },
     async logout () {
-      await this.$auth.logout()
-      await this.isAuthenticated()
+      await this.$auth.signOut()
     }
   }
 }

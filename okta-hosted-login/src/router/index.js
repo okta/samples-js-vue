@@ -14,7 +14,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import 'semantic-ui-css/semantic.min.css'
 
-import Auth from '@okta/okta-vue'
+import Auth, { ImplicitCallback } from '@okta/okta-vue'
 
 import HomeComponent from '@/components/Home'
 import ProfileComponent from '@/components/Profile'
@@ -34,7 +34,7 @@ const router = new Router({
     },
     {
       path: '/login/callback',
-      component: Auth.handleCallback()
+      component: ImplicitCallback
     },
     {
       path: '/profile',

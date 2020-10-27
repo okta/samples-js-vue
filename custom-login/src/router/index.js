@@ -14,7 +14,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import 'semantic-ui-css/semantic.min.css'
 
-import Auth from '@okta/okta-vue'
+import Auth, { ImplicitCallback } from '@okta/okta-vue'
 
 import HomeComponent from '@/components/Home'
 import LoginComponent from '@/components/Login'
@@ -24,7 +24,12 @@ import MessagesComponent from '@/components/Messages'
 import sampleConfig from '@/config'
 
 Vue.use(Router)
-Vue.use(Auth, sampleConfig.oidc)
+Vue.use(Auth, {
+  ...sampleConfig.oidc,
+  onAuthRequired: () => {
+    router.push('/login')
+  }
+})
 
 const router = new Router({
   mode: 'history',
@@ -39,7 +44,7 @@ const router = new Router({
     },
     {
       path: '/login/callback',
-      component: Auth.handleCallback()
+      component: ImplicitCallback
     },
     {
       path: '/profile',
@@ -58,15 +63,6 @@ const router = new Router({
   ]
 })
 
-const onAuthRequired = async (from, to, next) => {
-  if (from.matched.some(record => record.meta.requiresAuth) && !(await Vue.prototype.$auth.isAuthenticated())) {
-    // Navigate to custom login page
-    next({ path: '/login' })
-  } else {
-    next()
-  }
-}
-
-router.beforeEach(onAuthRequired)
+router.beforeEach(Vue.prototype.$auth.authRedirectGuard())
 
 export default router
