@@ -74,7 +74,6 @@ import sampleConfig from '../config'
 
 export default {
   name: 'Messages',
-  inject: ['authState'],
   data () {
     return {
       failed: false,

@@ -43,20 +43,16 @@ export default {
           }
         },
         authParams: {
-          pkce: true,
+          // To avoid redirect do not set "pkce" or "display" here. OKTA-335945
           issuer: sampleConfig.oidc.issuer,
-          display: 'page',
           scopes: sampleConfig.oidc.scopes
         }
       })
 
       this.widget.renderEl(
         { el: '#okta-signin-container' },
-        () => {
-          /**
-           * In this flow, the success handler will not be called because we redirect
-           * to the Okta org for the authentication workflow.
-           */
+        ({ tokens }) => {
+          this.$auth.handleLoginRedirect(tokens)
         },
         (err) => {
           throw err

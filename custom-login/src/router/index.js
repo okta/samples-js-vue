@@ -14,7 +14,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import 'semantic-ui-css/semantic.min.css'
 
-import Auth, { ImplicitCallback } from '@okta/okta-vue'
+import { OktaAuth } from '@okta/okta-auth-js'
+import OktaVue from '@okta/okta-vue'
 
 import HomeComponent from '@/components/Home'
 import LoginComponent from '@/components/Login'
@@ -23,9 +24,11 @@ import MessagesComponent from '@/components/Messages'
 
 import sampleConfig from '@/config'
 
+const oktaAuth = new OktaAuth(sampleConfig.oidc)
+
 Vue.use(Router)
-Vue.use(Auth, {
-  ...sampleConfig.oidc,
+Vue.use(OktaVue, {
+  oktaAuth,
   onAuthRequired: () => {
     router.push('/login')
   }
@@ -43,10 +46,6 @@ const router = new Router({
       component: LoginComponent
     },
     {
-      path: '/login/callback',
-      component: ImplicitCallback
-    },
-    {
       path: '/profile',
       component: ProfileComponent,
       meta: {
@@ -62,7 +61,5 @@ const router = new Router({
     }
   ]
 })
-
-router.beforeEach(Vue.prototype.$auth.authRedirectGuard())
 
 export default router

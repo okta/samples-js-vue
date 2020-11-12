@@ -75,7 +75,6 @@
 <script>
 export default {
   name: 'app',
-  inject: ['authState'],
   methods: {
     async logout () {
       await this.$auth.signOut()

@@ -74,7 +74,6 @@
 <script>
 export default {
   name: 'app',
-  inject: ['authState'],
   methods: {
     login () {
       this.$auth.signInWithRedirect('/')

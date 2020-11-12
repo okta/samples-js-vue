@@ -62,7 +62,6 @@
 <script>
 export default {
   name: 'home',
-  inject: ['authState'],
   data: function () {
     return {
       claims: '',

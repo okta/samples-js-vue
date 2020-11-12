@@ -69,7 +69,6 @@
 <script>
 export default {
   name: 'home',
-  inject: ['authState'],
   data: function () {
     return {
       claims: '',
@@ -85,7 +84,7 @@ export default {
       ]
     }
   },
-  created () { this.setup() },
+  mounted () { this.setup() },
   methods: {
     async setup () {
       if (this.authState.isAuthenticated) {

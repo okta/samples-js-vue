@@ -11,24 +11,25 @@
     "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.12",
-    "vue-router": "^3.4.3",
-    "@okta/okta-signin-widget": "^4.4.4",
-    "@okta/okta-vue": "^2.1.1",
+    "@okta/okta-auth-js": "^4.1.2",
+    "@okta/okta-signin-widget": "^4.5.2",
+    "@okta/okta-vue": "file:.yalc/@okta/okta-vue",
     "axios": "^0.20.0",
+    "core-js": "^3.6.5",
     "semantic-ui-css": "^2.4.1",
-    "text-encoding": "^0.7.0"
+    "text-encoding": "^0.7.0",
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.6",
     "@vue/cli-plugin-eslint": "~4.5.6",
     "@vue/cli-service": "~4.5.6",
     "babel-eslint": "^10.1.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.9.0",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.12",
-    "dotenv": "^8.2.0"
+    "vue-template-compiler": "^2.6.12"
   },
   "engines": {
     "node": ">= 6.0.0",
