@@ -57,3 +57,4 @@ PASSWORD=testpass
 ```
 
 With variables set, run `npm test`
+
