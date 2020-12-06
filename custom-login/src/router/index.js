@@ -58,7 +58,7 @@ const router = new Router({
   ]
 })
 
-const onAuthRequired = async (from, to, next) => {
+const onAuthRequired = async (to, from, next) => {
   if (from.matched.some(record => record.meta.requiresAuth) && !(await Vue.prototype.$auth.isAuthenticated())) {
     // Navigate to custom login page
     next({ path: '/login' })
