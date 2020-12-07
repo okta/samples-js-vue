@@ -26,15 +26,16 @@ export default {
   name: 'Login',
   mounted: function () {
     this.$nextTick(function () {
+      const { issuer, clientId, redirectUri, scopes } = sampleConfig.oidc
       this.widget = new OktaSignIn({
         /**
          * Note: when using the Sign-In Widget for an OIDC flow, it still
          * needs to be configured with the base URL for your Okta Org. Here
          * we derive it from the given issuer for convenience.
          */
-        baseUrl: sampleConfig.oidc.issuer.split('/oauth2')[0],
-        clientId: sampleConfig.oidc.clientId,
-        redirectUri: sampleConfig.oidc.redirectUri,
+        baseUrl: issuer.split('/oauth2')[0],
+        clientId,
+        redirectUri,
         // eslint-disable-next-line no-undef
         logo: require('@/assets/logo.png'),
         i18n: {
@@ -43,21 +44,19 @@ export default {
           }
         },
         authParams: {
-          // To avoid redirect do not set "pkce" or "display" here. OKTA-335945
-          issuer: sampleConfig.oidc.issuer,
-          scopes: sampleConfig.oidc.scopes
+          issuer,
+          scopes,
         }
       })
 
-      this.widget.renderEl(
-        { el: '#okta-signin-container' },
-        ({ tokens }) => {
-          this.$auth.handleLoginRedirect(tokens)
-        },
-        (err) => {
-          throw err
-        }
-      )
+      this.widget.showSignInToGetTokens({
+        el: '#okta-signin-container',
+        scopes
+      }).then(tokens => {
+        this.$auth.handleLoginRedirect(tokens)
+      }).catch(err => {
+        throw err
+      })
     })
   },
   destroyed () {

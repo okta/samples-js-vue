@@ -11,8 +11,8 @@
     "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-auth-js": "^4.1.2",
-    "@okta/okta-vue": "file:.yalc/@okta/okta-vue",
+    "@okta/okta-auth-js": "^4.3.0",
+    "@okta/okta-vue": "^3.0.0",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "semantic-ui-css": "^2.4.1",
