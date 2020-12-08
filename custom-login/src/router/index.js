@@ -14,7 +14,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import 'semantic-ui-css/semantic.min.css'
 
-import Auth from '@okta/okta-vue'
+import { OktaAuth } from '@okta/okta-auth-js'
+import OktaVue from '@okta/okta-vue'
 
 import HomeComponent from '@/components/Home'
 import LoginComponent from '@/components/Login'
@@ -23,8 +24,15 @@ import MessagesComponent from '@/components/Messages'
 
 import sampleConfig from '@/config'
 
+const oktaAuth = new OktaAuth(sampleConfig.oidc)
+
 Vue.use(Router)
-Vue.use(Auth, sampleConfig.oidc)
+Vue.use(OktaVue, {
+  oktaAuth,
+  onAuthRequired: () => {
+    router.push('/login')
+  }
+})
 
 const router = new Router({
   mode: 'history',
@@ -36,10 +44,6 @@ const router = new Router({
     {
       path: '/login',
       component: LoginComponent
-    },
-    {
-      path: '/login/callback',
-      component: Auth.handleCallback()
     },
     {
       path: '/profile',
@@ -57,16 +61,5 @@ const router = new Router({
     }
   ]
 })
-
-const onAuthRequired = async (from, to, next) => {
-  if (from.matched.some(record => record.meta.requiresAuth) && !(await Vue.prototype.$auth.isAuthenticated())) {
-    // Navigate to custom login page
-    next({ path: '/login' })
-  } else {
-    next()
-  }
-}
-
-router.beforeEach(onAuthRequired)
 
 export default router

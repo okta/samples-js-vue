@@ -13,7 +13,7 @@
 <template>
   <div id="home">
     <h1 class="ui header">Custom Login Page with Sign In Widget</h1>
-    <div v-if="!this.$parent.authenticated">
+    <div v-if="!authState.isAuthenticated">
       <p>If you‘re viewing this page then you have successfully started this Vue application.</p>
       <p>This example shows you how to use the
         <a href="https://github.com/okta/okta-oidc-js/tree/master/packages/okta-vue">Okta Vue Library</a>
@@ -38,7 +38,7 @@
       </router-link>
     </div>
 
-    <div v-if="this.$parent.authenticated">
+    <div v-if="authState.isAuthenticated">
       <p>Welcome back, {{claims.name}}!</p>
       <p>
         You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID token and access token in local storage.
@@ -84,10 +84,12 @@ export default {
       ]
     }
   },
-  created () { this.setup() },
+  mounted () { this.setup() },
   methods: {
     async setup () {
-      this.claims = await this.$auth.getUser()
+      if (this.authState.isAuthenticated) {
+        this.claims = await this.$auth.getUser()
+      }
     }
   }
 }

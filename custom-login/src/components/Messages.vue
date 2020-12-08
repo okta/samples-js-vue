@@ -82,7 +82,7 @@ export default {
   },
   async created () {
     try {
-      const accessToken = await this.$auth.getAccessToken()
+      const accessToken = this.$auth.getAccessToken()
       const response = await axios.get(
         sampleConfig.resourceServer.messagesUrl,
         {
