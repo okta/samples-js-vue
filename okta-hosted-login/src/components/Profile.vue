@@ -26,7 +26,7 @@
       and is now stored in local storage.
     </p>
     <p>
-      This route is protected with the <code>Okta AuthRedirectGuard</code>, which will ensure that this page cannot be accessed until you have authenticated.
+      This route is protected by Okta with the <code>requiresAuth: true</code> metadata in <code>router/index.js</code>. This ensures that this page cannot be accessed until you have authenticated.
     </p>
     <table class="ui table">
       <thead>
