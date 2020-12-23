@@ -73,6 +73,10 @@ export default {
         {
           label: 'Java/Spring MVC Resource Server Example',
           url: 'https://github.com/okta/samples-java-spring-mvc/tree/master/resource-server'
+        },
+        {
+          label: 'ASP.NET Core Web API Resource Server Example',
+          url: 'https://github.com/okta/samples-aspnetcore/tree/master/samples-aspnetcore-2x/resource-server'
         }
       ]
     }
