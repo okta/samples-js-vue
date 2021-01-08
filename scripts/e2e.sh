@@ -12,7 +12,7 @@ export TRAVIS=true
 export DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 export TEST_SUITE_TYPE="junit"
-export TEST_RESULT_FILE_DIR="${REPO}/build2/e2e"
+export TEST_RESULT_FILE_DIR="${REPO}/build2/reports/junit"
 
 export ISSUER=https://samples-javascript.okta.com/oauth2/default
 export CLIENT_ID=0oapmwm72082GXal14x6
@@ -25,12 +25,14 @@ function run_tests() {
   npm run pretest
   npm run test:okta-hosted-login
   kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
+  kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
   npm run test:custom-login
 }
 
 if ! run_tests; then
   echo "e2e tests failed! Exiting..."
-  exit ${TEST_FAILURE}
+  report_results FAILURE publish_type_and_result_dir_but_always_fail
+  exit 1
 fi
 
 echo ${TEST_SUITE_TYPE} > ${TEST_SUITE_TYPE_FILE}
