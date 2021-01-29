@@ -60,7 +60,7 @@ export default {
       })
     })
   },
-  destroyed () {
+  unmounted () {
     // Remove the widget from the DOM on path change
     this.widget.remove()
   }

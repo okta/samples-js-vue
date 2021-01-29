@@ -1,12 +1,10 @@
 # Okta Vue + Okta Hosted Login Example
 
+> Note: You're currently looking at sample applications that support Vue 3. If you are looking for samples for Vue 2, please checkout the [main branch](https://github.com/okta/samples-js-vue).
+
 This example shows you how to use the [Okta Vue Library][] to log in a user to a Vue application.  The login is achieved through the [PKCE Flow][], where the user is redirected to the Okta-Hosted login page.  After the user authenticates they are redirected back to the application with an ID Token and Access Token.
 
 This example is built with [Vue CLI][].
-
-Dependencies
-
-* @okta/okta-vue@^2.1.1
 
 ## Prerequisites
 

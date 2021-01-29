@@ -1,13 +1,10 @@
 # Okta Vue + Custom Login Example
 
+> Note: You're currently looking at sample applications that support Vue 3. If you are looking for samples for Vue 2, please checkout the [main branch](https://github.com/okta/samples-js-vue).
+
 This example shows you how to use the [Okta Vue Library][] to log in a user to a Vue application.  The login is achieved with the [Okta Sign In Widget][], which gives you more control to customize the login experience within your app.
 
 This example is built with the [Vue CLI][].
-
-Dependencies
-
-* @okta/okta-vue@^2.1.1
-* @okta/okta-signin-widget@^4.4.3
 
 ## Prerequisites
 
