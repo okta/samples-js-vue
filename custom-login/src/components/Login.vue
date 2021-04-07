@@ -26,7 +26,7 @@ export default {
   name: 'Login',
   mounted: function () {
     this.$nextTick(function () {
-      const { issuer, clientId, redirectUri, scopes } = sampleConfig.oidc
+      const { issuer, clientId, redirectUri, scopes, useInteractionCodeFlow } = sampleConfig.oidc
       this.widget = new OktaSignIn({
         /**
          * Note: when using the Sign-In Widget for an OIDC flow, it still
@@ -46,7 +46,8 @@ export default {
         authParams: {
           issuer,
           scopes,
-        }
+        },
+        useInteractionCodeFlow
       })
 
       this.widget.showSignInToGetTokens({

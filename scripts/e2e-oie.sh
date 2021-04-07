@@ -14,25 +14,29 @@ export DBUS_SESSION_BUS_ADDRESS=/dev/null
 export TEST_SUITE_TYPE="junit"
 export TEST_RESULT_FILE_DIR="${REPO}/build2/reports/junit"
 
-export ISSUER=https://samples-javascript.okta.com/oauth2/default
-export CLIENT_ID=0oapmwm72082GXal14x6
+export ORG_OIE_ENABLED=true # This flag ensures the TCK tests run OIE tests
+export USE_INTERACTION_CODE=true # This flag ensures that the self hosted widget uses interact code flow
+export ISSUER=https://oie-widget-tests.sigmanetcorp.us/oauth2/default
+export CLIENT_ID=0oa3nv55b0KjBuxEq0g7
 export USERNAME=george@acme.com
+export EMAIL_MFA_USERNAME=email-login@email.ghostinspector.com
 get_secret prod/okta-sdk-vars/password PASSWORD
+export DEFAULT_TIMEOUT_INTERVAL=45000
 
 cd ${OKTA_HOME}/${REPO}
 
 function run_tests() {
-  npm run pretest
-  npm run test:okta-hosted-login
-  kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
-  kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
-  npm run test:custom-login
+    npm run pretest
+    npm run test:okta-hosted-login
+    # kill app and resource servers
+    kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
+    kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
+    npm run test:custom-login
 }
 
 if ! run_tests; then
   echo "e2e tests failed! Exiting..."
-  report_results FAILURE publish_type_and_result_dir_but_always_fail
-  exit 1
+  exit ${TEST_FAILURE}
 fi
 
 echo ${TEST_SUITE_TYPE} > ${TEST_SUITE_TYPE_FILE}
