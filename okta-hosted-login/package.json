@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@okta/okta-auth-js": "^4.6.1",
-    "@okta/okta-vue": "git://github.com/okta/okta-vue.git#sw-support-vue-3-OKTA-353048",
+    "@okta/okta-vue": "^4.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "semantic-ui-css": "^2.4.1",
