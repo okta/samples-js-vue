@@ -28,6 +28,9 @@ createApp(App)
     oktaAuth,
     onAuthRequired: () => {
       router.push('/login')
-    }
+    },
+    onAuthResume: () => {
+      router.push('/login')
+    },
   })
   .mount('#app')

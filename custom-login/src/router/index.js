@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { LoginCallback } from '@okta/okta-vue'
 import HomeComponent from '@/components/Home'
 import LoginComponent from '@/components/Login'
 import ProfileComponent from '@/components/Profile'
@@ -17,7 +18,7 @@ const router = createRouter({
     },
     {
       path: '/login/callback',
-      component: LoginComponent
+      component: LoginCallback
     },
     {
       path: '/profile',
