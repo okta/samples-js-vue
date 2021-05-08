@@ -1,6 +1,6 @@
 {
   "name": "@okta/samples-js-vue",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Vue Sample Applications for Okta",
   "scripts": {
     "lint": "npm run --prefix okta-hosted-login/ lint && npm run --prefix custom-login/ lint",

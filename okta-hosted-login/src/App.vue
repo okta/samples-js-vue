@@ -27,7 +27,7 @@
         </router-link>
         <a
           class="item"
-          v-if="!authState.isAuthenticated"
+          v-if="authState && !authState.isAuthenticated"
           v-on:click="login()"
         >
         Login
@@ -36,7 +36,7 @@
           to="/messages"
           class="item"
           id="messages-button"
-          v-if="authState.isAuthenticated"
+          v-if="authState && authState.isAuthenticated"
         >
           <i
             aria-hidden="true"
@@ -48,14 +48,14 @@
           to="/profile"
           class="item"
           id="profile-button"
-          v-if="authState.isAuthenticated"
+          v-if="authState && authState.isAuthenticated"
         >
         Profile
         </router-link>
         <a
           id="logout-button"
           class="item"
-          v-if="authState.isAuthenticated"
+          v-if="authState && authState.isAuthenticated"
           v-on:click="logout()"
         >
         Logout
@@ -76,7 +76,7 @@ export default {
   name: 'app',
   methods: {
     login () {
-      this.$auth.signInWithRedirect('/')
+      this.$auth.signInWithRedirect({ originalUri: '/' })
     },
     async logout () {
       await this.$auth.signOut()

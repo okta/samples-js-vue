@@ -54,10 +54,15 @@ export default {
         el: '#okta-signin-container',
         scopes
       }).then(tokens => {
+        const originalUri = this.$auth.getOriginalUri();
+        if (!originalUri) {
+          this.$auth.setOriginalUri('/');
+        }
         this.$auth.handleLoginRedirect(tokens)
       }).catch(err => {
         throw err
       })
+
     })
   },
   unmounted () {

@@ -1,6 +1,6 @@
 {
   "name": "okta-hosted-login",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
@@ -11,8 +11,8 @@
     "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-auth-js": "^4.6.1",
-    "@okta/okta-vue": "^4.0.0",
+    "@okta/okta-auth-js": "^5.0.0",
+    "@okta/okta-vue": "okta/okta-vue#upgrade-to-auth-js-5",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "semantic-ui-css": "^2.4.1",
