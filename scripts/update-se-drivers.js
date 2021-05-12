@@ -31,15 +31,15 @@ console.log(`Chrome Major Version - ${chromeMajorVersion}`);
 
 const chromeDriverUrl = `https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${chromeMajorVersion}`;
 
-const chromeDriverVersion = spawnSync('curl', [chromeDriverUrl], { encoding : 'utf8' });
+const {stdout: chromeDriverVersion, stderr: errorResponse} = spawnSync('curl', [chromeDriverUrl], { encoding : 'utf8' });
 
-if(!chromeDriverVersion.stdout) {
-    console.log("ERROR: ",chromeDriverVersion.stderr);
+if(!chromeDriverVersion) {
+    console.log("ERROR: ",errorResponse);
 }
 else {
-    console.log(`Chrome Driver Version - ${chromeDriverVersion.stdout}`);
+    console.log(`Chrome Driver Version - ${chromeDriverVersion}`);
     try {
-    execFileSync(`${__dirname}/../node_modules/protractor/bin/webdriver-manager`, ["update",  "--versions.chrome", chromeDriverVersion.stdout, "--gecko", "false", "--versions.standalone", "latest"]);
+    execFileSync(`${__dirname}/../node_modules/protractor/bin/webdriver-manager`, ["update",  "--versions.chrome", chromeDriverVersion, "--gecko", "false", "--versions.standalone", "latest"]);
     console.log('Webdriver was updated');
 } catch (err) {
     console.log(err);
