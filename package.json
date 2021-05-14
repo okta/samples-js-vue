@@ -6,7 +6,7 @@
     "lint": "npm run --prefix okta-hosted-login/ lint && npm run --prefix custom-login/ lint",
     "test": "npm run lint && npm run test:e2e",
     "okta-hosted-login-server": "npm start --prefix okta-hosted-login/",
-    "test:okta-hosted-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/okta-hosted-login/conf.js",
+    "test:okta-hosted-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-hosted-login/protractor.conf.js",
     "custom-login-server": "npm start --prefix custom-login/",
     "test:custom-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/custom-login/conf.js",
     "resource-server": "node scripts/startResourceServer.js",
