@@ -36,6 +36,12 @@ function run_tests() {
     # kill app and resource servers
     kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
     kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
+    echo "start of envs echo"
+    echo "ORG_OIE_ENABLED"
+    echo ORG_OIE_ENABLED
+    echo "USE_INTERACTION_CODE"
+    echo USE_INTERACTION_CODE
+    echo "end of envs echo"
     npm run test:custom-login
 }
 
