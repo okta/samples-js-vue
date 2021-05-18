@@ -46,6 +46,10 @@ const router = new Router({
       component: LoginComponent
     },
     {
+      path: '/login/callback',
+      component: LoginComponent
+    },
+    {
       path: '/profile',
       component: ProfileComponent,
       meta: {

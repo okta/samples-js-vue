@@ -1,4 +1,3 @@
-const axios = require('axios');
 const { execSync, execFileSync, spawnSync } = require('child_process');
 
 function getOS() {
