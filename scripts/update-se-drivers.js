@@ -1,5 +1,4 @@
-const axios = require('axios');
-const { execSync, execFileSync } = require('child_process');
+const { execSync, execFileSync, spawnSync } = require('child_process');
 
 function getOS() {
   let os = process.platform;
@@ -31,12 +30,17 @@ console.log(`Chrome Major Version - ${chromeMajorVersion}`);
 
 const chromeDriverUrl = `https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${chromeMajorVersion}`;
 
-axios.get(chromeDriverUrl).then((response) => {
-  const chromeDriverVersion = response.data;
-  console.log(`Chrome Driver Version - ${chromeDriverVersion}`);
+const {stdout: chromeDriverVersion, stderr: errorResponse} = spawnSync('curl', [chromeDriverUrl], { encoding : 'utf8' });
 
-  execFileSync(`${__dirname}/../node_modules/protractor/bin/webdriver-manager`, ["update",  "--versions.chrome", chromeDriverVersion, "--gecko", "false", "--versions.standalone", "latest"]);
-  console.log('Webdriver was updated');
-}).catch((err) => {
-  console.log(err);
-});
+if(!chromeDriverVersion) {
+    console.log("ERROR: ",errorResponse);
+}
+else {
+    console.log(`Chrome Driver Version - ${chromeDriverVersion}`);
+    try {
+    execFileSync(`${__dirname}/../node_modules/protractor/bin/webdriver-manager`, ["update",  "--versions.chrome", chromeDriverVersion, "--gecko", "false", "--versions.standalone", "latest"]);
+    console.log('Webdriver was updated');
+} catch (err) {
+    console.log(err);
+  };
+}
