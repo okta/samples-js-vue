@@ -11,7 +11,7 @@
     "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-auth-js": "^4.3.0",
+    "@okta/okta-auth-js": "^4.8.0",
     "@okta/okta-signin-widget": "^5.5.0",
     "@okta/okta-vue": "^3.0.0",
     "axios": "^0.21.1",
