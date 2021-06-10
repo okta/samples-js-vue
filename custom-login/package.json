@@ -11,48 +11,25 @@
     "pretest": "npm run pretest --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-auth-js": "^4.3.0",
+    "@okta/okta-auth-js": "^4.9.2",
     "@okta/okta-signin-widget": "^5.5.0",
-    "@okta/okta-vue": "^3.0.0",
+    "@okta/okta-vue": "^4.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "semantic-ui-css": "^2.4.1",
     "text-encoding": "^0.7.0",
-    "vue": "^2.6.12",
-    "vue-router": "^3.4.3"
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.6",
-    "@vue/cli-plugin-eslint": "~4.5.6",
-    "@vue/cli-service": "~4.5.6",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
-    "dotenv": "^8.2.0",
-    "eslint": "^7.9.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.12"
-  },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0-0",
+    "vue-loader-v16": "npm:vue-loader@^16.2.0"
+  }
 }
