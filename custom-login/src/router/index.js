@@ -17,25 +17,15 @@ import 'semantic-ui-css/semantic.min.css'
 import { OktaAuth } from '@okta/okta-auth-js'
 import OktaVue, { LoginCallback }  from '@okta/okta-vue'
 
+import { createRouter, createWebHistory } from 'vue-router'
+import { LoginCallback } from '@okta/okta-vue'
 import HomeComponent from '@/components/Home'
 import LoginComponent from '@/components/Login'
 import ProfileComponent from '@/components/Profile'
 import MessagesComponent from '@/components/Messages'
 
-import sampleConfig from '@/config'
-
-const oktaAuth = new OktaAuth(sampleConfig.oidc)
-
-Vue.use(Router)
-Vue.use(OktaVue, {
-  oktaAuth,
-  onAuthRequired: () => {
-    router.push('/login')
-  }
-})
-
-const router = new Router({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes: [
     {
       path: '/',

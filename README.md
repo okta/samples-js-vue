@@ -1,5 +1,7 @@
 # Vue Sample Applications for Okta
 
+> Note: You're currently looking at sample applications that support Vue 3. If you are looking for samples for Vue 2, please checkout the [vue-2 branch](https://github.com/okta/samples-js-vue/tree/vue-2).
+
 This repository contains several sample applications that demonstrate various Okta use-cases in your Vue application.
 
 Each sample makes use of the [Okta Vue Library][].

@@ -9,16 +9,20 @@
  *
  * See the License for the specific language governing permissions and limitations under the License.
  */
-import Vue from 'vue'
+import { createApp } from 'vue'
+import { OktaAuth } from '@okta/okta-auth-js'
+import OktaVue from '@okta/okta-vue'
 import './polyfills'
-import App from './App'
+import App from './App.vue'
 import router from './router'
 
-Vue.config.productionTip = false
+import 'semantic-ui-css/semantic.min.css'
 
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
-})
+import sampleConfig from '@/config'
+
+const oktaAuth = new OktaAuth(sampleConfig.oidc)
+
+createApp(App)
+  .use(router)
+  .use(OktaVue, { oktaAuth })
+  .mount('#app')
