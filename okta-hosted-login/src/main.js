@@ -15,7 +15,6 @@ import OktaVue from '@okta/okta-vue'
 import './polyfills'
 import App from './App.vue'
 import router from './router'
-import sampleConfig from './config'
 
 import 'semantic-ui-css/semantic.min.css'
 
