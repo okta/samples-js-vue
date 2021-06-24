@@ -89,7 +89,7 @@ export default {
       }
     },
     login () {
-      this.$auth.signInWithRedirect('/')
+      this.$auth.signInWithRedirect({ originalUri: '/' })
     }
   }
 }
