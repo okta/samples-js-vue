@@ -50,14 +50,15 @@ export default {
         useInteractionCodeFlow
       })
 
+      const originalUri = this.$auth.getOriginalUri();
+      if (!originalUri) {
+        this.$auth.setOriginalUri('/');
+      }
+      
       this.widget.showSignInToGetTokens({
         el: '#okta-signin-container',
         scopes
       }).then(tokens => {
-        const originalUri = this.$auth.getOriginalUri();
-        if (!originalUri) {
-          this.$auth.setOriginalUri('/');
-        }
         this.$auth.handleLoginRedirect(tokens)
       }).catch(err => {
         throw err
