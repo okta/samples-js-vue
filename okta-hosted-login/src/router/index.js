@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { LoginCallback } from '@okta/okta-vue'
+import { LoginCallback, navigationGuard } from '@okta/okta-vue'
 import HomeComponent from '@/components/Home'
 import ProfileComponent from '@/components/Profile'
 import MessagesComponent from '@/components/Messages'
@@ -31,5 +31,7 @@ const router = createRouter({
     }
   ]
 })
+
+router.beforeEach(navigationGuard)
 
 export default router

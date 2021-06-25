@@ -13,7 +13,7 @@
 <template>
   <div id="home">
     <h1 class="ui header">PKCE Flow w/ Okta Hosted Login Page</h1>
-    <div v-if="!authState.isAuthenticated">
+    <div v-if="!authState || !authState.isAuthenticated">
       <p>If you‘re viewing this page then you have successfully started this Vue application.</p>
       <p>This example shows you how to use the
         <a href="https://github.com/okta/okta-oidc-js/tree/master/packages/okta-vue">Okta Vue Library</a> to add the
@@ -31,7 +31,7 @@
       </button>
     </div>
 
-    <div v-if="authState.isAuthenticated">
+    <div v-if="authState && authState.isAuthenticated">
       <p>Welcome back, {{claims && claims.name}}!</p>
       <p>
         You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID token and access token in local storage.
@@ -84,12 +84,12 @@ export default {
   created () { this.setup() },
   methods: {
     async setup () {
-      if (this.authState.isAuthenticated) {
+      if (this.authState && this.authState.isAuthenticated) {
         this.claims = await this.$auth.getUser()
       }
     },
     login () {
-      this.$auth.signInWithRedirect('/')
+      this.$auth.signInWithRedirect({ originalUri: '/' })
     }
   }
 }
