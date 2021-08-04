@@ -57,7 +57,8 @@ export default {
     }
   },
   async created () {
-    this.claims = await Object.entries(await this.$auth.getUser()).map(entry => ({ claim: entry[0], value: entry[1] }))
+    const idToken = await this.$auth.tokenManager.get('idToken')
+    this.claims = await Object.entries(idToken.claims).map(entry => ({ claim: entry[0], value: entry[1] }))
   }
 }
 </script>
