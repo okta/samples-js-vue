@@ -6,6 +6,24 @@ This example shows you how to use the [Okta Vue Library][] to log in a user to a
 
 This example is built with the [Vue CLI][].
 
+## Quick Start: Automatic Setup with Heroku
+
+You need a [Heroku](https://signup.heroku.com/) account to follow these instructions.
+
+You can create a free Okta Developer org and deploy this app directly to Heroku by clicking the purple button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+After you deploy the app, click on **View** on the result screen to navigate to the newly deployed app.
+
+Open your browser's developer tools view and choose the **Network** tab.
+
+Click **Profile (pkce)** at the top of the app. You are redirected to your Okta org to authenticate. BUT, you won't yet know the credentials.
+
+Back on the result tab from the deployment, click on **Manage App**. This brings you to the Heroku dashboard for the app. Click **Settings** and then **Reveal Config Vars**. Here, you see values for `OKTA_ADMIN_EMAIL` and `OKTA_ADMIN_PASSWORD`. You can use these values to login to the app on the other tab.
+
+After you login, you'll see an `ID Token`, `Access Token` and profile details.
+
 ## Prerequisites
 
 Before running this sample, you will need the following:
