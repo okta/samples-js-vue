@@ -79,7 +79,8 @@ export default {
       this.$auth.signInWithRedirect({ originalUri: '/' })
     },
     async logout () {
-      await this.$auth.signOut()
+      const publicPath = this.$route.href.replace(new RegExp(this.$route.fullPath + '$'), '');
+      await this.$auth.signOut({ postLogoutRedirectUri: `${window.location.origin}${publicPath}` })
     }
   }
 }
