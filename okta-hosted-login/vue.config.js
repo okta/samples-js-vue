@@ -39,5 +39,6 @@ module.exports = {
         return args;
       })
   },
-  runtimeCompiler: true
+  runtimeCompiler: true,
+  publicPath: process.env.NODE_ENV === 'production' ? '/okta-hosted-login' : '/'
 }
