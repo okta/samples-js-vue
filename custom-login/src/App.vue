@@ -69,12 +69,17 @@
     >
       <router-view/>
     </div>
+    <OnAuthRequiredModal />
   </div>
 </template>
 
 <script>
+import OnAuthRequiredModal from './components/OnAuthRequiredModal.vue';
 export default {
   name: 'app',
+  components: {
+    OnAuthRequiredModal,
+  },
   methods: {
     async logout () {
       const publicPath = this.$route.href.replace(new RegExp(this.$route.fullPath + '$'), '');

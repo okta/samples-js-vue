@@ -68,12 +68,17 @@
     >
       <router-view/>
     </div>
+    <OnAuthRequiredModal />
   </div>
 </template>
 
 <script>
+import OnAuthRequiredModal from './components/OnAuthRequiredModal.vue';
 export default {
   name: 'app',
+  components: {
+    OnAuthRequiredModal,
+  },
   methods: {
     login () {
       this.$auth.signInWithRedirect({ originalUri: '/' })
