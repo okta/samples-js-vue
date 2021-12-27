@@ -5,9 +5,9 @@
     @confirm=confirmModal
     @cancel=closeModal
   >
-    <template v-slot:title></template>
+    <template v-slot:title>Auth requried</template>
     <template v-slot:confirm>Yes</template>
-    <template v-slot:cancel>Cancel</template>
+    <template v-slot:cancel>No</template>
     <p>Do you want to re-authenticate?</p>
   </ConfirmModal>
   </div>
@@ -18,7 +18,7 @@ import ConfirmModal from './ConfirmModal.vue';
 import router from '../router';
 import { emitter } from '../main';
 export default {
-  name: 'OnAuthRequiredModal',
+  name: 'AuthRequiredModal',
   data() {
     return {
       isModalVisible: false,
@@ -48,7 +48,6 @@ export default {
       this.isModalVisible = false;
       router.push('/login');
     },
-
   },
   components: {
     ConfirmModal

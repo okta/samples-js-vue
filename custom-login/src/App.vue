@@ -69,16 +69,16 @@
     >
       <router-view/>
     </div>
-    <OnAuthRequiredModal />
+    <AuthRequiredModal />
   </div>
 </template>
 
 <script>
-import OnAuthRequiredModal from './components/OnAuthRequiredModal.vue';
+import AuthRequiredModal from './components/AuthRequiredModal.vue';
 export default {
   name: 'app',
   components: {
-    OnAuthRequiredModal,
+    AuthRequiredModal,
   },
   methods: {
     async logout () {
