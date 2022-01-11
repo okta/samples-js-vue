@@ -5,7 +5,7 @@
     @confirm=confirmModal
     @cancel=closeModal
   >
-    <template v-slot:title>Auth requried</template>
+    <template v-slot:title>Auth required</template>
     <template v-slot:confirm>Yes</template>
     <template v-slot:cancel>No</template>
     <p>Do you want to re-authenticate?</p>
