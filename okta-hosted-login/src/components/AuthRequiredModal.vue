@@ -15,7 +15,6 @@
 
 <script>
 import ConfirmModal from './ConfirmModal.vue';
-import { emitter } from '../main';
 export default {
   name: 'AuthRequiredModal',
   data() {
@@ -24,8 +23,8 @@ export default {
       oktaAuth: null
     }
   },
-  created() {
-    emitter.on('_onAuthRequired', (oktaAuth) => {
+  methods: {
+    onAuthRequired(oktaAuth) {
       this.oktaAuth = oktaAuth;
       if (!oktaAuth.authStateManager.getPreviousAuthState()?.isAuthenticated) {
         // App initialization stage
@@ -34,9 +33,7 @@ export default {
         // Ask the user to trigger the login process during token autoRenew process
         this.showModal();
       }
-    });
-  },
-  methods: {
+    },
     showModal() {
       this.isModalVisible = true;
     },

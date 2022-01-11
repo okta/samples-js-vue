@@ -68,7 +68,7 @@
     >
       <router-view/>
     </div>
-    <AuthRequiredModal />
+    <AuthRequiredModal ref="authRequiredModal" />
   </div>
 </template>
 
@@ -80,6 +80,9 @@ export default {
     AuthRequiredModal,
   },
   methods: {
+    onAuthRequired(oktaAuth) {
+      this.$refs.authRequiredModal.onAuthRequired(oktaAuth);
+    },
     login () {
       this.$auth.signInWithRedirect({ originalUri: '/' })
     },
