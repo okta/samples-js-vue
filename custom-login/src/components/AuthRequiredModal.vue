@@ -30,7 +30,7 @@ export default {
       this.oktaAuth = oktaAuth;
       if (!oktaAuth.authStateManager.getPreviousAuthState()?.isAuthenticated) {
         // App initialization stage
-        this.confirmModal();
+        router.push('/login');
       } else {
         // Ask the user to trigger the login process during token autoRenew process
         this.showModal();
