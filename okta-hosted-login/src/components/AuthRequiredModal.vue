@@ -24,17 +24,8 @@ export default {
     }
   },
   methods: {
-    onAuthRequired(oktaAuth) {
+    showModal(oktaAuth) {
       this.oktaAuth = oktaAuth;
-      if (!oktaAuth.authStateManager.getPreviousAuthState()?.isAuthenticated) {
-        // App initialization stage
-        this.oktaAuth.signInWithRedirect();
-      } else {
-        // Ask the user to trigger the login process during token autoRenew process
-        this.showModal();
-      }
-    },
-    showModal() {
       this.isModalVisible = true;
     },
     closeModal() {

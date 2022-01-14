@@ -81,7 +81,13 @@ export default {
   },
   methods: {
     onAuthRequired(oktaAuth) {
-      this.$refs.authRequiredModal.onAuthRequired(oktaAuth);
+      if (!oktaAuth.authStateManager.getPreviousAuthState()?.isAuthenticated) {
+        // App initialization stage
+        oktaAuth.signInWithRedirect();
+      } else {
+        // Ask the user to trigger the login process during token autoRenew process
+        this.$refs.authRequiredModal.showModal(oktaAuth);
+      }
     },
     login () {
       this.$auth.signInWithRedirect({ originalUri: '/' })

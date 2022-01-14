@@ -24,15 +24,6 @@ export default {
     }
   },
   methods: {
-    onAuthRequired(oktaAuth) {
-      if (!oktaAuth.authStateManager.getPreviousAuthState()?.isAuthenticated) {
-        // App initialization stage
-        router.push('/login');
-      } else {
-        // Ask the user to trigger the login process during token autoRenew process
-        this.showModal();
-      }
-    },
     showModal() {
       this.isModalVisible = true;
     },
