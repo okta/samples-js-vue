@@ -22,12 +22,12 @@ import sampleConfig from '@/config'
 
 const oktaAuth = new OktaAuth(sampleConfig.oidc)
 
-createApp(App)
+const app = createApp(App)
   .use(router)
   .use(OktaVue, {
     oktaAuth,
     onAuthRequired: () => {
-      router.push('/login')
+      app.onAuthRequired(oktaAuth);
     },
     onAuthResume: () => {
       router.push('/login')

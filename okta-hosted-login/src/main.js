@@ -22,7 +22,12 @@ import sampleConfig from '@/config'
 
 const oktaAuth = new OktaAuth(sampleConfig.oidc)
 
-createApp(App)
+const app = createApp(App)
   .use(router)
-  .use(OktaVue, { oktaAuth })
+  .use(OktaVue, {
+    oktaAuth,
+    onAuthRequired: () => {
+      app.onAuthRequired(oktaAuth);
+    },
+  })
   .mount('#app')

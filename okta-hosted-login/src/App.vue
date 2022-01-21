@@ -68,13 +68,27 @@
     >
       <router-view/>
     </div>
+    <AuthRequiredModal ref="authRequiredModal" />
   </div>
 </template>
 
 <script>
+import AuthRequiredModal from './components/AuthRequiredModal.vue';
 export default {
   name: 'app',
+  components: {
+    AuthRequiredModal,
+  },
   methods: {
+    onAuthRequired(oktaAuth) {
+      if (!oktaAuth.authStateManager.getPreviousAuthState()?.isAuthenticated) {
+        // App initialization stage
+        oktaAuth.signInWithRedirect();
+      } else {
+        // Ask the user to trigger the login process during token autoRenew process
+        this.$refs.authRequiredModal.showModal(oktaAuth);
+      }
+    },
     login () {
       this.$auth.signInWithRedirect({ originalUri: '/' })
     },
