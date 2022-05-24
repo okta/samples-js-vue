@@ -21,6 +21,7 @@ import 'semantic-ui-css/semantic.min.css'
 import sampleConfig from '@/config'
 
 const oktaAuth = new OktaAuth(sampleConfig.oidc)
+oktaAuth.start()
 
 const app = createApp(App)
   .use(router)
