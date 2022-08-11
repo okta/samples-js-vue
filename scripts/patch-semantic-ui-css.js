@@ -1,3 +1,4 @@
+// OKTA-523251: remove patch script once the fix is available in fomantic-ui-css
 const path = require('path');
 const fs = require('fs');
 
