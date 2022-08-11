@@ -8,14 +8,15 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "npm run lint && npm run test:okta-hosted-login --prefix ../",
-    "pretest": "npm run pretest --prefix ../"
+    "pretest": "npm run pretest --prefix ../",
+    "postinstall": "npm run patch-semantic-ui-css --prefix ../"
   },
   "dependencies": {
     "@okta/okta-auth-js": "^6.0.0",
     "@okta/okta-vue": "^5.1.0",
     "axios": "^0.27.2",
     "core-js": "^3.15.1",
-    "semantic-ui-css": "^2.4.1",
+    "fomantic-ui-css": "^2.8.8",
     "text-encoding": "^0.7.0",
     "vue": "^3.1.2",
     "vue-final-modal": "^3.4.3",
