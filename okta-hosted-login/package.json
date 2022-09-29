@@ -12,8 +12,8 @@
     "postinstall": "npm run patch-semantic-ui-css --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-auth-js": "https://artifacts.aue1d.saasure.com/artifactory/npm-topic/@okta/okta-auth-js/-/@okta/okta-auth-js-7.0.0-g3df843b.tgz",
-    "@okta/okta-vue": "https://artifacts.aue1d.saasure.com/artifactory/npm-topic/@okta/okta-vue/-/@okta/okta-vue-5.4.0-g9837d0b.tgz",
+    "@okta/okta-auth-js": "^7.0.0",
+    "@okta/okta-vue": "^5.5.0",
     "axios": "^0.27.2",
     "core-js": "^3.15.1",
     "fomantic-ui-css": "^2.8.8",
