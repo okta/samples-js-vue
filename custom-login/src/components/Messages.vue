@@ -92,7 +92,7 @@ export default {
         }
       )
 
-      const messages = response.data.messages.map((message) => {
+      const messages = response.data.map((message) => {
         let index = 1
         const date = new Date(message.date)
         const day = date.toLocaleDateString()
