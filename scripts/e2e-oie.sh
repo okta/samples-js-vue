@@ -13,7 +13,6 @@ export USE_INTERACTION_CODE=true # This flag ensures that the self hosted widget
 export ISSUER=https://oie-signin-widget.okta.com/oauth2/default
 export CLIENT_ID=0oa8lrg7ojTsbJgRQ696
 export USERNAME=george@acme.com
-export EMAIL_MFA_USERNAME=email-login@email.ghostinspector.com
 get_vault_secret_key devex/samples-javascript password PASSWORD
 export DEFAULT_TIMEOUT_INTERVAL=45000
 
