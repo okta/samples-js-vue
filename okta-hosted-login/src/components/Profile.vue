@@ -48,16 +48,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Profile',
-  data () {
-    return {
-      claims: []
-    }
-  },
-  async created () {
-    this.claims = await Object.entries(await this.$auth.getUser()).map(entry => ({ claim: entry[0], value: entry[1] }))
-  }
-}
+<script setup>
+import { onMounted, ref, inject } from 'vue';
+import { useAuth } from '@okta/okta-vue';
+const $auth = useAuth();
+
+const claims = ref([]);
+
+onMounted(async () => {
+  const user = await $auth.getUser();
+  claims.value = await Object.entries(user).map(entry => ({
+    claim: entry[0],
+    value: entry[1]
+  }))
+});
 </script>

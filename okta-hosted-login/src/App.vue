@@ -73,29 +73,45 @@
 </template>
 
 <script>
+import { ref, inject } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useAuth } from '@okta/okta-vue';
 import AuthRequiredModal from './components/AuthRequiredModal.vue';
 export default {
   name: 'app',
   components: {
     AuthRequiredModal,
   },
-  methods: {
-    onAuthRequired(oktaAuth) {
+  setup() {
+    const oktaAuth = useAuth();
+    const authState = inject('okta.authState');
+    const route = useRoute();
+    const router = useRouter();
+    const authRequiredModal = ref(null);
+    const onAuthRequired = () => {
       if (!oktaAuth.authStateManager.getPreviousAuthState()?.isAuthenticated) {
         // App initialization stage
         oktaAuth.signInWithRedirect();
       } else {
         // Ask the user to trigger the login process during token autoRenew process
-        this.$refs.authRequiredModal.showModal(oktaAuth);
+        authRequiredModal.value.showModal(oktaAuth);
       }
-    },
-    login () {
-      this.$auth.signInWithRedirect({ originalUri: '/' })
-    },
-    async logout () {
-      const publicPath = this.$route.href.replace(new RegExp(this.$route.fullPath + '$'), '');
-      await this.$auth.signOut({ postLogoutRedirectUri: `${window.location.origin}${publicPath}` })
-    }
+    };
+    const login = () => {
+      oktaAuth.signInWithRedirect({ originalUri: '/' })
+    };
+    const logout = async () => {
+      const publicPath = router.currentRoute.value.href.replace(new RegExp(route.fullPath + '$'), '');
+      await oktaAuth.signOut({ postLogoutRedirectUri: `${window.location.origin}${publicPath}` })
+    };
+
+    return {
+      login,
+      logout,
+      onAuthRequired,
+      authRequiredModal,
+      //authState, // enable for okta-vue 5.7+
+    };
   }
 }
 </script>

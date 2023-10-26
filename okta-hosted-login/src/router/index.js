@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { LoginCallback, navigationGuard } from '@okta/okta-vue'
-import HomeComponent from '@/components/Home'
-import ProfileComponent from '@/components/Profile'
-import MessagesComponent from '@/components/Messages'
+import HomeComponent from '../components/Home.vue'
+import ProfileComponent from '../components/Profile.vue'
+import MessagesComponent from '../components/Messages.vue'
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

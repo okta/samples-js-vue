@@ -67,46 +67,43 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { onMounted, ref, inject } from 'vue';
+import { useAuth } from '@okta/okta-vue';
 import axios from 'axios'
 import sampleConfig from '../config'
 
-export default {
-  name: 'Messages',
-  data () {
-    return {
-      failed: false,
-      messages: []
-    }
-  },
-  async created () {
-    try {
-      const accessToken = this.$auth.getAccessToken()
-      const response = await axios.get(
-        sampleConfig.resourceServer.messagesUrl,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        }
-      )
+const $auth = useAuth();
+const messages = ref([]);
+const failed = ref(false);
 
-      const messages = response.data.messages.map((message) => {
-        let index = 1
-        const date = new Date(message.date)
-        const day = date.toLocaleDateString()
-        const time = date.toLocaleTimeString()
-        return {
-          date: `${day} ${time}`,
-          text: message.text,
-          index: index++
+onMounted(async () => {
+  try {
+    const accessToken = $auth.getAccessToken()
+    const response = await axios.get(
+      sampleConfig.resourceServer.messagesUrl,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
         }
-      })
-      this.messages = messages
-    } catch (e) {
-      console.error(e)
-      this.failed = true
-    }
+      }
+    )
+
+    messages.value = response.data.messages.map((message) => {
+      let index = 1
+      const date = new Date(message.date)
+      const day = date.toLocaleDateString()
+      const time = date.toLocaleTimeString()
+      return {
+        date: `${day} ${time}`,
+        text: message.text,
+        index: index++
+      }
+    })
+  } catch (e) {
+    console.error(e)
+    failed.value = true
   }
-}
+});
+
 </script>

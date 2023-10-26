@@ -59,38 +59,33 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'home',
-  data: function () {
-    return {
-      claims: '',
-      resourceServerExamples: [
-        {
-          label: 'Node/Express Resource Server Example',
-          url: 'https://github.com/okta/samples-nodejs-express-4/tree/master/resource-server'
-        },
-        {
-          label: 'Java/Spring MVC Resource Server Example',
-          url: 'https://github.com/okta/samples-java-spring-mvc/tree/master/resource-server'
-        },
-        {
-          label: 'ASP.NET Core Web API Resource Server Example',
-          url: 'https://github.com/okta/samples-aspnetcore/tree/master/samples-aspnetcore-2x/resource-server'
-        }
-      ]
-    }
+<script setup>
+import { onMounted, ref, inject } from 'vue';
+import { useAuth } from '@okta/okta-vue';
+const oktaAuth = useAuth();
+//const authState = inject('okta.authState'); // enable for okta-vue 5.7+
+const claims = ref('');
+const login = () => {
+  oktaAuth.signInWithRedirect({ originalUri: '/' })
+};
+const resourceServerExamples = [
+  {
+    label: 'Node/Express Resource Server Example',
+    url: 'https://github.com/okta/samples-nodejs-express-4/tree/master/resource-server'
   },
-  created () { this.setup() },
-  methods: {
-    async setup () {
-      if (this.authState && this.authState.isAuthenticated) {
-        this.claims = await this.$auth.getUser()
-      }
-    },
-    login () {
-      this.$auth.signInWithRedirect({ originalUri: '/' })
-    }
+  {
+    label: 'Java/Spring MVC Resource Server Example',
+    url: 'https://github.com/okta/samples-java-spring-mvc/tree/master/resource-server'
+  },
+  {
+    label: 'ASP.NET Core Web API Resource Server Example',
+    url: 'https://github.com/okta/samples-aspnetcore/tree/master/samples-aspnetcore-2x/resource-server'
   }
-}
+];
+onMounted(async () => {
+  const authState = oktaAuth.authStateManager.getAuthState();
+  if (authState && authState.isAuthenticated) {
+    claims.value = await oktaAuth.getUser()
+  }
+});
 </script>

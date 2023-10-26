@@ -18,7 +18,7 @@ import router from './router'
 
 import 'fomantic-ui-css/semantic.min.css'
 
-import sampleConfig from '@/config'
+import sampleConfig from './config'
 
 const oktaAuth = new OktaAuth(sampleConfig.oidc)
 
@@ -27,7 +27,7 @@ const app = createApp(App)
   .use(OktaVue, {
     oktaAuth,
     onAuthRequired: () => {
-      app.onAuthRequired(oktaAuth);
+      app.onAuthRequired();
     },
   })
   .mount('#app')
