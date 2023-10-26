@@ -63,6 +63,7 @@
 import { onMounted, ref, inject } from 'vue';
 import { useAuth } from '@okta/okta-vue';
 const oktaAuth = useAuth();
+const authState = oktaAuth.authStateManager.getAuthState();
 //const authState = inject('okta.authState'); // enable for okta-vue 5.7+
 const claims = ref('');
 const login = () => {
@@ -83,7 +84,6 @@ const resourceServerExamples = [
   }
 ];
 onMounted(async () => {
-  const authState = oktaAuth.authStateManager.getAuthState();
   if (authState && authState.isAuthenticated) {
     claims.value = await oktaAuth.getUser()
   }
