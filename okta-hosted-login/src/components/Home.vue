@@ -63,8 +63,7 @@
 import { onMounted, ref, inject } from 'vue';
 import { useAuth } from '@okta/okta-vue';
 const oktaAuth = useAuth();
-const authState = oktaAuth.authStateManager.getAuthState();
-//const authState = inject('okta.authState'); // enable for okta-vue 5.7+
+const authState = inject('okta.authState');
 const claims = ref('');
 const login = () => {
   oktaAuth.signInWithRedirect({ originalUri: '/' })

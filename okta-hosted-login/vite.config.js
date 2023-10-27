@@ -7,6 +7,6 @@ export default defineConfig({
   plugins: [vue()],
   define: {
     'process.env': process.env,
-    //'__VUE_OPTIONS_API__': false, // enable for okta-vue 5.7+
+    //'__VUE_OPTIONS_API__': false,
   }
 })
