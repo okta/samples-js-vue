@@ -68,7 +68,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, inject } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useAuth } from '@okta/okta-vue';
 import axios from 'axios'
 import sampleConfig from '../config'
