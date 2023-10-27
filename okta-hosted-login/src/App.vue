@@ -110,7 +110,7 @@ export default {
       logout,
       onAuthRequired,
       authRequiredModal,
-      //authState, // enable for okta-vue 5.7+
+      authState,
     };
   }
 }
