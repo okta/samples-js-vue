@@ -18,7 +18,7 @@ import router from './router'
 
 import 'fomantic-ui-css/semantic.min.css'
 
-import sampleConfig from '@/config'
+import sampleConfig from './config'
 
 const oktaAuth = new OktaAuth(sampleConfig.oidc)
 

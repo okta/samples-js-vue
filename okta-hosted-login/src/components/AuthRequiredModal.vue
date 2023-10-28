@@ -14,31 +14,35 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useAuth } from '@okta/okta-vue';
 import ConfirmModal from './ConfirmModal.vue';
+
 export default {
   name: 'AuthRequiredModal',
-  data() {
-    return {
-      isModalVisible: false,
-      oktaAuth: null
-    }
-  },
-  methods: {
-    showModal(oktaAuth) {
-      this.oktaAuth = oktaAuth;
-      this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
-    },
-    confirmModal() {
-      this.isModalVisible = false;
-      this.oktaAuth.signInWithRedirect();
-    },
-  },
   components: {
     ConfirmModal
   },
   inheritAttrs: false,
+  setup() {
+    const isModalVisible = ref(false);
+    const oktaAuth = useAuth();
+    const showModal = () => {
+      isModalVisible.value = true;
+    };
+    const closeModal = () => {
+      isModalVisible.value = false;
+    };
+    const confirmModal = () => {
+      isModalVisible.value = false;
+      oktaAuth.signInWithRedirect();
+    };
+    return {
+      showModal,
+      closeModal,
+      confirmModal,
+      isModalVisible,
+    };
+  }
 }
 </script>

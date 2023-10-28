@@ -19,6 +19,7 @@
 <script>
 import OktaSignIn from '@okta/okta-signin-widget'
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css'
+import logo from '../assets/logo.png'
 
 import sampleConfig from '../config'
 
@@ -39,7 +40,7 @@ export default {
         clientId,
         redirectUri,
         // eslint-disable-next-line no-undef
-        logo: require('@/assets/logo.png'),
+        logo,
         i18n: {
           en: {
             'primaryauth.title': 'Sign in to Vue & Company'
