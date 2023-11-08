@@ -15,7 +15,7 @@
   "dependencies": {
     "@okta/okta-auth-js": "^7.2.0",
     "@okta/okta-vue": "^5.7.0",
-    "axios": "^0.27.2",
+    "axios": "^1.6.1",
     "core-js": "^3.15.1",
     "fomantic-ui-css": "^2.8.8",
     "text-encoding": "^0.7.0",
@@ -31,9 +31,12 @@
     "@vue/cli-plugin-router": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
     "@vue/compiler-sfc": "^3.1.2",
-    "@babel/eslint-parser": "^7.18.9",
-    "eslint": "^7.29.0",
-    "eslint-plugin-vue": "^7.11.1",
+    "@babel/eslint-parser": "^7.22.15",
+    "eslint": "^8.53.0",
+    "eslint-plugin-vue": "^9.18.1",
     "vue-loader-v16": "npm:vue-loader@^16.1.2"
+  },
+  "overrides": {
+    "semver": "6.3.1"
   }
 }
