@@ -13,7 +13,7 @@ export default {
     clientId: CLIENT_ID,
     issuer: ISSUER,
     redirectUri: REDIRECT_URI,
-    scopes: ['openid', 'profile', 'email'],
+    scopes: ['openid', 'profile', 'email', 'offline_access'],
     pkce: true,
     useInteractionCodeFlow: USE_INTERACTION_CODE_FLOW,
     testing: {
