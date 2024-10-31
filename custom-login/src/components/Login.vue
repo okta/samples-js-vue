@@ -50,7 +50,7 @@ export default {
           issuer,
           scopes,
         },
-        useClassicFlow: !useInteractionCodeFlow,
+        useClassicEngine: !useInteractionCodeFlow,
         state,
         otp
       })
