@@ -8,6 +8,7 @@ export DBUS_SESSION_BUS_ADDRESS=/dev/null
 export TEST_SUITE_TYPE="junit"
 export TEST_RESULT_FILE_DIR="${REPO}/build2/reports/junit"
 
+export USE_INTERACTION_CODE=false # This flag ensures that the self hosted widget uses interact code flow
 export ISSUER=https://samples-javascript.okta.com/oauth2/default
 export CLIENT_ID=0oapmwm72082GXal14x6
 export USERNAME=george@acme.com
