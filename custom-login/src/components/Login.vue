@@ -18,7 +18,7 @@
 
 <script>
 import OktaSignIn from '@okta/okta-signin-widget'
-import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css'
+import '@okta/okta-signin-widget/css/okta-sign-in.min.css'
 import logo from '../assets/logo.png'
 
 import sampleConfig from '../config'
@@ -50,7 +50,7 @@ export default {
           issuer,
           scopes,
         },
-        useInteractionCodeFlow,
+        useClassicEngine: !useInteractionCodeFlow,
         state,
         otp
       })
