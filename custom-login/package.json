@@ -13,8 +13,8 @@
     "postinstall": "npm run patch-semantic-ui-css --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-auth-js": "~7.9.0",
-    "@okta/okta-signin-widget": "~7.26.1",
+    "@okta/okta-auth-js": "^7.9.0",
+    "@okta/okta-signin-widget": "^7.26.1",
     "@okta/okta-vue": "^5.7.0",
     "axios": "^1.7.9",
     "fomantic-ui-css": "^2.8.8",
