@@ -13,16 +13,15 @@
     "postinstall": "npm run patch-semantic-ui-css --prefix ../"
   },
   "dependencies": {
-    "@okta/okta-auth-js": "^7.8.1",
-    "@okta/okta-signin-widget": "^7.24.2",
+    "@okta/okta-auth-js": "^7.9.0",
+    "@okta/okta-signin-widget": "^7.26.1",
     "@okta/okta-vue": "^5.7.0",
-    "axios": "^1.6.4",
-    "core-js": "^3.15.1",
+    "axios": "^1.7.9",
     "fomantic-ui-css": "^2.8.8",
     "text-encoding": "^0.7.0",
-    "vue": "^3.2.47",
+    "vue": "^3.5.13",
     "vue-final-modal": "^3.4.3",
-    "vue-router": "^4.0.10"
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
