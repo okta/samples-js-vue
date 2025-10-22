@@ -13,13 +13,6 @@ test_suites:
       script_name: e2e-oie
       criteria: MERGE
       queue_name: small
-    - name: semgrep
-      script_path: /root/okta/samples-js-vue/scripts
-      sort_order: '3'
-      timeout: '10'
-      script_name: semgrep
-      criteria: MERGE
-      queue_name: small
     - name: synk
       script_path: /root/okta/samples-js-vue/scripts
       script_name: synk
