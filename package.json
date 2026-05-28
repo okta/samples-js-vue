@@ -34,7 +34,7 @@
   "bugs": "https://github.com/okta/samples-js-vue/issues",
   "homepage": "https://github.com/okta/samples-js-vue",
   "devDependencies": {
-    "axios": "^1.7.9",
+    "axios": "^1.15.0",
     "dotenv": "^16.4.7",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.27.5",
@@ -46,6 +46,7 @@
     "wait-on": "^7.2.0"
   },
   "overrides": {
+    "axios": "^1.15.0",
     "semver": "6.3.1"
   },
   "bin": {},
